@@ -46,7 +46,7 @@ export const Content = styled.div`
   }
 
   > a {
-    color: #0f43a9;
+    color: #fff;
     margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
@@ -54,7 +54,7 @@ export const Content = styled.div`
     align-items: center;
 
     &:hover {
-      color: ${shade(0.2, '#0f43a9')};
+      color: ${shade(0.2, '#fff')};
     }
 
     svg {
