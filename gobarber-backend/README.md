@@ -1,6 +1,15 @@
-# template-node-typescript
-A personal template to speed up the creation of a new Node project with TypeScript.
+### What is it?
+<b>GoBarber's Backend</b>
 
-## 📝 Licença
+### Technologies used:
+- [Node](https://nodejs.org/en/)
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+### How to run?
+This project uses NodeJS, in order for it to work, frist navigate insde the project folder and run npm install to download the proper dependencies:
+```
+cd gobarber-backend
+npm install
+npm run start
+```
+### Licence
+This is under MIT license. See [LICENSE](../LICENSE.md) for more details.
