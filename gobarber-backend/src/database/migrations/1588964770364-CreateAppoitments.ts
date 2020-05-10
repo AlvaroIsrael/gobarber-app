@@ -5,7 +5,7 @@ export default class CreateAppoitments1588964770364 implements MigrationInterfac
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'appoitments',
+        name: 'appointments',
         columns: [{
           name: 'id',
           type: 'varchar',
@@ -26,6 +26,6 @@ export default class CreateAppoitments1588964770364 implements MigrationInterfac
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('appoitments');
+    await queryRunner.dropTable('appointments');
   }
 }
