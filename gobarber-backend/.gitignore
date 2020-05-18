@@ -107,3 +107,7 @@ dist
 .vs
 .vscode
 .dist
+temp/
+
+tmp/*
+!tmp/.gitkeep
