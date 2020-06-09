@@ -3,7 +3,6 @@ class AppError extends Error {
 
   constructor(message: string, statusCode = 400) {
     super(message);
-
     Object.setPrototypeOf(this, AppError.prototype);
     this.statusCode = statusCode;
   }
