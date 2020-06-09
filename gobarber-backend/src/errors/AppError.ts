@@ -1,10 +1,10 @@
-class AppError {
-  public readonly message: string;
-
+class AppError extends Error {
   public readonly statusCode: number;
 
   constructor(message: string, statusCode = 400) {
-    this.message = message;
+    super(message);
+
+    Object.setPrototypeOf(this, AppError.prototype);
     this.statusCode = statusCode;
   }
 }
