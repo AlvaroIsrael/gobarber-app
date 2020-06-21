@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import AuthenticateUserService from '../services/AuthenticateUserService';
+import * as HttpStatus from 'http-status-codes';
 
 const sessionsRouter = Router();
 
@@ -14,7 +15,7 @@ sessionsRouter.post('/', async (request, response) => {
 
   delete user.password;
 
-  return response.status(200).json({user, token});
+  return response.status(HttpStatus.OK).json({user, token});
 });
 
 export default sessionsRouter;

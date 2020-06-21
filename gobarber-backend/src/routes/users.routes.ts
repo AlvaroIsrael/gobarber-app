@@ -4,6 +4,7 @@ import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import multer from 'multer';
 import uploadConfig from '../config/upload';
+import * as HttpStatus from 'http-status-codes';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
@@ -21,7 +22,7 @@ usersRouter.post('/', async (request, response) => {
   * Not a good practice, even if it is encrypted. So we remove it here.*/
   delete user.password;
 
-  return response.status(200).json(user);
+  return response.status(HttpStatus.OK).json(user);
 });
 
 usersRouter.patch('/avatar',
@@ -36,7 +37,7 @@ usersRouter.patch('/avatar',
 
     delete user.password;
 
-    return response.status(200).json(user);
+    return response.status(HttpStatus.OK).json(user);
   });
 
 export default usersRouter;

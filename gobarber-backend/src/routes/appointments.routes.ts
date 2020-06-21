@@ -4,6 +4,7 @@ import {parseISO} from 'date-fns';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import * as HttpStatus from 'http-status-codes';
 
 const appointmentsRouter = Router();
 
@@ -25,7 +26,7 @@ appointmentsRouter.post('/', async (request, response) => {
     providerId,
   });
 
-  return response.status(200).json(appointment);
+  return response.status(HttpStatus.OK).json(appointment);
 });
 
 

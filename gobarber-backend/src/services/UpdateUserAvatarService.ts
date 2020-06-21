@@ -4,6 +4,7 @@ import path from 'path';
 import uploadConfig from '../config/upload';
 import fs from 'fs';
 import AppError from '../errors/AppError';
+import * as HttpStatus from 'http-status-codes';
 
 interface Request {
   userId: string,
@@ -17,7 +18,7 @@ class UpdateUserAvatarService {
     const user = await userRepository.findOne(userId);
 
     if (!user) {
-      throw new AppError('You must be authenticated to change the avatar.', 401);
+      throw new AppError('You must be authenticated to change the avatar.', HttpStatus.UNAUTHORIZED);
     }
 
     if (user.avatar) {
