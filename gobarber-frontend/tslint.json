@@ -1,10 +1,11 @@
 {
   "rules": {
     "ordered-imports": false,
-    "interface-name" : false,
+    "interface-name": false,
     "object-literal-sort-keys": false,
     "jsx-boolean-value": false,
-    "no-console": false
+    "no-console": false,
+    "jsx-no-lambda": false
   },
   "extends": [
     "tslint:recommended",
