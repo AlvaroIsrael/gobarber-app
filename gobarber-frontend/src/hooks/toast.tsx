@@ -11,10 +11,10 @@ const Toast = createContext<ToastContextData>({} as ToastContextData);
 
 const ToastProvider: React.FC = ({children}: PropsWithChildren<ReactNode>) => {
   const addToast = useCallback(() => {
-    console.log('marotoass');
+    console.log('addToast');
   }, []);
   const removeToast = useCallback(() => {
-    console.log('marotoass');
+    console.log('removeToast');
   }, []);
   return (
     <Toast.Provider value={{addToast, removeToast}}>

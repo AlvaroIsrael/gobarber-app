@@ -1,3 +1,14 @@
 {
-  "extends": []
+  "rules": {
+    "ordered-imports": false,
+    "interface-name" : false,
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": false,
+    "no-console": false
+  },
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ]
 }
