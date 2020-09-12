@@ -49,6 +49,7 @@ export const Container = styled.div<ToastProps>`
   }
 
   button {
+    cursor: pointer;
     position: absolute;
     right: 8px;
     top: 8px;

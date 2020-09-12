@@ -24,7 +24,7 @@ const Toast: React.FC<ToastProps> = ({message}: React.PropsWithChildren<ToastPro
     return () => {
       clearTimeout(timer);
     };
-  }, [message.id, removeToast]);
+  }, [removeToast, message.id]);
 
   return (
     <Container type={message.type} hasDescription={!!message.description}>
@@ -33,8 +33,9 @@ const Toast: React.FC<ToastProps> = ({message}: React.PropsWithChildren<ToastPro
         <strong>{message.title}</strong>
         {message.description && <p>{message.description}</p>}
       </div>
-      <FiXCircle size={18} />
-      <button onClick={() => removeToast(message.id)} type="button" aria-label="close" />
+      <button onClick={() => removeToast(message.id)} type="button" aria-label="close">
+        <FiXCircle size={18} />
+      </button>
     </Container>
   );
 };
