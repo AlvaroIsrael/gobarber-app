@@ -35,17 +35,13 @@ const getDataFromLocalStorage = (): AuthState => {
 export const AuthProvider: React.FC = ({children}: PropsWithChildren<ReactNode>) => {
   const [data, setData] = useState<AuthState>(getDataFromLocalStorage);
   const signIn = useCallback(async ({email, password}: SignInCredentials) => {
-    try {
-      const response = await api.post<AuthState>('sessions', {email, password});
-      const {token, user} = response.data;
+    const response = await api.post<AuthState>('sessions', {email, password});
+    const {token, user} = response.data;
 
-      localStorage.setItem('@GoBarber:token', token);
-      localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+    localStorage.setItem('@GoBarber:token', token);
+    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
 
-      setData({token, user});
-    } catch (e) {
-      e.toString();
-    }
+    setData({token, user});
   }, []);
 
   const signOut = useCallback(() => {
