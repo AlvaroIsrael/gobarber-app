@@ -8,8 +8,8 @@ interface ToastProps {
 }
 
 const icons = {
-  info: <FiInfo size={24} />,
-  error: <FiAlertCircle size={24} />,
+  info: <FiInfo size={20} />,
+  error: <FiAlertCircle size={20} />,
   success: <FiCheckCircle size={20} />,
 };
 
