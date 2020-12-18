@@ -1,10 +1,11 @@
-import React, {PropsWithChildren, useEffect} from 'react';
-import {FiAlertCircle, FiXCircle, FiCheckCircle, FiInfo} from 'react-icons/fi';
-import {Container} from './styles';
-import {ToastMessage, useToast} from '../../../hooks/toast';
+import React, { PropsWithChildren, useEffect } from 'react';
+import { FiAlertCircle, FiXCircle, FiCheckCircle, FiInfo } from 'react-icons/fi';
+import { Container } from './styles';
+import { ToastMessage, useToast } from '../../../hooks/toast';
 
 interface ToastProps {
   message: ToastMessage;
+  style: object;
 }
 
 const icons = {
@@ -13,8 +14,8 @@ const icons = {
   success: <FiCheckCircle size={20} />,
 };
 
-const Toast: React.FC<ToastProps> = ({message}: React.PropsWithChildren<ToastProps>) => {
-  const {removeToast} = useToast();
+const Toast: React.FC<ToastProps> = ({ message, style }: React.PropsWithChildren<ToastProps>) => {
+  const { removeToast } = useToast();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,7 +28,7 @@ const Toast: React.FC<ToastProps> = ({message}: React.PropsWithChildren<ToastPro
   }, [removeToast, message.id]);
 
   return (
-    <Container type={message.type} hasDescription={!!message.description}>
+    <Container type={message.type} hasDescription={!!message.description} style={style}>
       {icons[message.type || 'info']}
       <div>
         <strong>{message.title}</strong>
