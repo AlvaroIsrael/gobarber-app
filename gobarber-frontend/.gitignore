@@ -32,3 +32,5 @@ tmp/*
 .lock
 
 .csv
+
+yarn.lock
