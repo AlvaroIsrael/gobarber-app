@@ -33,6 +33,17 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "jsx-quotes": [
+      2,
+      "prefer-single"
+    ],
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "no-use-before-define": "off",
     "key-spacing": [
       "error",
