@@ -1,22 +1,55 @@
 import React, { useCallback, useRef } from 'react';
-import { Image, View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import logger from 'debug';
+import { Image, View, KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import { useNavigation } from '@react-navigation/native';
+import * as Yup from 'yup';
 import logoImage from '../../assets/logo.png';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
+import getValidationErrors from '../../utils/getValidationErrors';
+
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
-  const handleSignUp = useCallback((data: object) => {
-    logger.log(data);
+  const emailInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<TextInput>(null);
+
+  const handleSignUp = useCallback(async (data: SignUpFormData) => {
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+        password: Yup.string().min(6, 'No mínimo 6 digitos'),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      // await api.post('/users', data);
+
+      // history.push('/');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const error = getValidationErrors(err);
+        formRef.current?.setErrors(error);
+        return;
+      }
+
+      Alert.alert('Erro no cadastro', 'Erro ao fazer o cadastro, tente novamente.');
+    }
   }, []);
+
   return (
     <>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} enabled>
@@ -27,10 +60,34 @@ const SignUp: React.FC = () => {
               <Title>Crie sua conta</Title>
             </View>
             <Form ref={formRef} onSubmit={handleSignUp}>
-              <Input name={'name'} icon={'user'} placeholder={'Nome'} />
-              <Input name={'email'} icon={'mail'} placeholder={'E-mail'} />
-              <Input name={'password'} icon={'lock'} placeholder={'Senha'} />
-
+              <Input
+                autoCapitalize='words'
+                name={'name'}
+                icon={'user'}
+                placeholder={'Nome'}
+                returnKeyType='send'
+                onSubmitEditing={() => emailInputRef.current?.submitForm()}
+              />
+              <Input
+                ref={emailInputRef}
+                keyboardType='email-address'
+                autoCorrect={false}
+                autoCapitalize='none'
+                name={'email'}
+                icon={'mail'}
+                placeholder={'E-mail'}
+                returnKeyType='send'
+                onSubmitEditing={() => passwordInputRef.current?.submitForm()}
+              />
+              <Input
+                ref={passwordInputRef}
+                secureTextEntry
+                name={'password'}
+                icon={'lock'}
+                placeholder={'Senha'}
+                textContentType='newPassword'
+                onSubmitEditing={() => formRef.current?.submitForm()}
+              />
               <View>
                 <Button onPress={() => formRef.current?.submitForm()}>Entrar</Button>
               </View>
