@@ -56,9 +56,16 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
     });
   }, [fieldName, registerField]);
 
+  const handleInputColorState = (hasFocus: boolean, hasContent: boolean, hasError: boolean): string => {
+    if (hasError && !hasFocus) {
+      return '#a90f27';
+    }
+    return hasFocus || hasContent ? '#ffffff' : '#232323';
+  };
+
   return (
-    <Container isFocused={isFocused}>
-      <Icon name={icon} size={20} color={isFocused || isFilled ? '#ffffff' : '#232323'} />
+    <Container isFocused={isFocused} hasError={!!error}>
+      <Icon name={icon} size={20} color={handleInputColorState(isFocused, isFilled, !!error)} />
       <TextInput
         ref={inputElementRef}
         onChangeText={value => {
