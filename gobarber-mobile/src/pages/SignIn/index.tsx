@@ -10,6 +10,8 @@ import logoImage from '../../assets/logo.png';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
+import { useAuth } from '../../hooks/auth';
+
 import {
   Container,
   Title,
@@ -28,39 +30,38 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
+  const { signIn, signOut } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const handleSignIn = useCallback(async (data: SignInFormData) => {
-    const form = formRef.current;
-    if (!form) {
-      return;
-    }
-    try {
-      form.setErrors({});
 
-      const schema = Yup.object().shape({
-        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-        password: Yup.string().required('Senha obrigatória'),
-      });
+  const handleSignIn = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      await schema.validate(data, { abortEarly: false });
+        const schema = Yup.object().shape({
+          email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+          password: Yup.string().required('Senha obrigatória'),
+        });
 
-      /* await signIn({
-       email: data.email,
-       password: data.password,
-       }); */
+        await schema.validate(data, { abortEarly: false });
 
-      // history.push('/dashboard');
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const error = getValidationErrors(err);
-        form.setErrors(error);
-        return;
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const error = getValidationErrors(err);
+          formRef.current?.setErrors(error);
+          return;
+        }
+
+        Alert.alert('Erro na autenticação', 'Erro ao fazer login, cheque as credenciais.');
       }
-
-      Alert.alert('Erro na autenticação', 'Erro ao fazer login, cheque as credenciais.');
-    }
-  }, []);
+    },
+    [signIn],
+  );
 
   return (
     <>
@@ -106,7 +107,7 @@ const SignIn: React.FC = () => {
             </Form>
             <ForgotPassword
               onPress={() => {
-                logger.log('teste');
+                logger.log('ForgotPassword');
               }}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
