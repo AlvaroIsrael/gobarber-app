@@ -30,17 +30,14 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
-  const { signIn } = useAuth();
+  const { signIn, signOut } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
+
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
-      const form = formRef.current;
-      if (!form) {
-        return;
-      }
       try {
-        form.setErrors({});
+        formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
@@ -53,12 +50,10 @@ const SignIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
-
-        // history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const error = getValidationErrors(err);
-          form.setErrors(error);
+          formRef.current?.setErrors(error);
           return;
         }
 
@@ -112,7 +107,7 @@ const SignIn: React.FC = () => {
             </Form>
             <ForgotPassword
               onPress={() => {
-                logger.log('teste');
+                logger.log('ForgotPassword');
               }}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
