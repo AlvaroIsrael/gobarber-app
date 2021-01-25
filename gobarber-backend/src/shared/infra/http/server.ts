@@ -8,6 +8,7 @@ import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 
 import '@shared/infra/typeorm';
+import '@shared/container';
 
 const server = express();
 

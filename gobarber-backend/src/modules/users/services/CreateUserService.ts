@@ -3,6 +3,7 @@ import { hash } from 'bcryptjs';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
   name: string,
@@ -10,13 +11,12 @@ interface IRequest {
   password: string,
 }
 
+@injectable()
 class CreateUserService {
-  private usersRepository: IUsersRepository;
-
   constructor(
-    usersRepository: IUsersRepository,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {
-    this.usersRepository = usersRepository;
   }
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
