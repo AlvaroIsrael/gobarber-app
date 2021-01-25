@@ -1,21 +1,27 @@
-import { getRepository } from 'typeorm';
 import User from '@modules/users/infra/typeorm/entities/User';
 import path from 'path';
 import uploadConfig from '@config/upload';
 import fs from 'fs';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
-interface Request {
+interface IRequest {
   userId: string,
   avatarFilename: string
 }
 
 class UpdateUserAvatarService {
-  public async execute({ userId, avatarFilename }: Request): Promise<User> {
-    const userRepository = getRepository(User);
+  private usersRepository: IUsersRepository;
 
-    const user = await userRepository.findOne(userId);
+  constructor(
+    usersRepository: IUsersRepository,
+  ) {
+    this.usersRepository = usersRepository;
+  }
+
+  public async execute({ userId, avatarFilename }: IRequest): Promise<User> {
+    const user = await this.usersRepository.findById(userId);
 
     if (!user) {
       throw new AppError('You must be authenticated to change the avatar.', HttpStatus.UNAUTHORIZED);
@@ -31,7 +37,7 @@ class UpdateUserAvatarService {
     }
 
     user.avatar = avatarFilename;
-    await userRepository.save(user);
+    await this.usersRepository.save(user);
     return user;
   }
 }
