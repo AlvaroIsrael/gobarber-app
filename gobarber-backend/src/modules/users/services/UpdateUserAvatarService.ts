@@ -5,19 +5,19 @@ import fs from 'fs';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
   userId: string,
   avatarFilename: string
 }
 
+@injectable()
 class UpdateUserAvatarService {
-  private usersRepository: IUsersRepository;
-
   constructor(
-    usersRepository: IUsersRepository,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {
-    this.usersRepository = usersRepository;
   }
 
   public async execute({ userId, avatarFilename }: IRequest): Promise<User> {

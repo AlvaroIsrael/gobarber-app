@@ -5,6 +5,7 @@ import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
   email: string,
@@ -16,13 +17,12 @@ interface IResponse {
   token: string;
 }
 
+@injectable()
 class AuthenticateUserService {
-  private usersRepository: IUsersRepository;
-
   constructor(
-    usersRepository: IUsersRepository,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {
-    this.usersRepository = usersRepository;
   }
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {

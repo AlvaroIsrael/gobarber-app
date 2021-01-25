@@ -3,19 +3,19 @@ import { startOfHour } from 'date-fns';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
+import { container, inject, injectable } from 'tsyringe';
 
 interface IRequest {
   providerId: string;
   date: Date;
 }
 
+@injectable()
 class CreateAppointmentService {
-  private appointmentsRepository: IAppointmentsRepository;
-
   constructor(
-    appointmentsRepository: IAppointmentsRepository,
+    @inject('AppointmentsRepository')
+    private appointmentsRepository: IAppointmentsRepository,
   ) {
-    this.appointmentsRepository = appointmentsRepository;
   }
 
   public async execute({ date, providerId }: IRequest): Promise<Appointment> {
