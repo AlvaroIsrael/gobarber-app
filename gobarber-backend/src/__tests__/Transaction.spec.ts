@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { isUuid } from 'uuidv4';
-import app from '../app';
+import app from '@shared/infra/http/server';
 
 describe('Transaction', () => {
   it('should be able to create a new transaction', async () => {

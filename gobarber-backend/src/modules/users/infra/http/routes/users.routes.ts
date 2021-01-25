@@ -1,16 +1,16 @@
-import {Router} from 'express';
-import CreateUserService from '../services/CreateUserService';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import { Router } from 'express';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import multer from 'multer';
-import uploadConfig from '../config/upload';
+import uploadConfig from '@config/upload';
 import * as HttpStatus from 'http-status-codes';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
 
 usersRouter.post('/', async (request, response) => {
-  const {name, email, password} = request.body;
+  const { name, email, password } = request.body;
 
   const createUser = new CreateUserService();
 
@@ -19,7 +19,7 @@ usersRouter.post('/', async (request, response) => {
   });
 
   /* We should not return a users password in the request.
-  * Not a good practice, even if it is encrypted. So we remove it here.*/
+   * Not a good practice, even if it is encrypted. So we remove it here.*/
   delete user.password;
 
   return response.status(HttpStatus.OK).json(user);

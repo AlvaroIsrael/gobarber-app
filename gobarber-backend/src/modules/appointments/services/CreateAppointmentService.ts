@@ -1,8 +1,8 @@
-import {getCustomRepository} from 'typeorm';
-import AppointmentsRepository from '../repositories/AppointmentsRepository';
-import Appointment from '../models/Appointment';
-import {startOfHour} from 'date-fns';
-import AppError from '../errors/AppError';
+import { getCustomRepository } from 'typeorm';
+import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
+import { startOfHour } from 'date-fns';
+import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 
 interface Request {
@@ -11,7 +11,7 @@ interface Request {
 }
 
 class CreateAppointmentService {
-  public async execute({date, providerId}: Request): Promise<Appointment> {
+  public async execute({ date, providerId }: Request): Promise<Appointment> {
     const appointmentRepository = getCustomRepository(AppointmentsRepository);
 
     const appointmentDate = startOfHour(date);
