@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
 import FakeAppointmentsRepository from '@modules/appointments/repositories/fakes/FakeAppointmentsRepository';
+import AppError from '@shared/errors/AppError';
 
 describe('CreateAppointment', () => {
   it('should be able to create a new appointment.', async () => {
@@ -18,6 +19,19 @@ describe('CreateAppointment', () => {
   });
 
   it('should not be able to create two appointments at the same time.', async () => {
+    const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+    const createAppointment = new CreateAppointmentService(fakeAppointmentsRepository);
 
+    const appointmentDate = new Date();
+
+    await createAppointment.execute({
+      date: appointmentDate,
+      providerId: '30C5BE67-58CA-4D2C-A436-3A817E8F62CB',
+    });
+
+    await expect(createAppointment.execute({
+      date: appointmentDate,
+      providerId: 'C23AE5CD-91A1-4459-BC67-08A7E354EC4B',
+    })).rejects.toBeInstanceOf(AppError);
   });
 });
