@@ -7,7 +7,7 @@ import IStorageProvider from '@shared/container/providers/StorageProvider/models
 class DiskStorageProvider implements IStorageProvider {
   public async saveFile(file: string): Promise<string> {
     await fs.promises.rename(
-      path.resolve(uploadConfig.directory, file),
+      path.resolve(uploadConfig.tmpFolder, file),
       path.resolve(uploadConfig.uploadsFolder, file),
     );
 
@@ -18,11 +18,13 @@ class DiskStorageProvider implements IStorageProvider {
     const filePath = path.resolve(uploadConfig.uploadsFolder, file);
 
     try {
+      /*Checking if file exists.*/
       await fs.promises.stat(filePath);
     } catch {
       return;
     }
 
+    /*If it does then delete it.*/
     await fs.promises.unlink(filePath);
   }
 }
