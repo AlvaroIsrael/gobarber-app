@@ -17,6 +17,7 @@
     "@types/jest": "^25.2.1",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.3",
+    "@types/nodemailer": "^6.4.0",
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
@@ -35,6 +36,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@types/http-status-codes": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "date-fns": "^2.13.0",
@@ -43,6 +45,7 @@
     "http-status-codes": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
+    "nodemailer": "^6.4.17",
     "pg": "^8.1.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.4.0",

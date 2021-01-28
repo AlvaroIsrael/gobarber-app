@@ -3,7 +3,7 @@ import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
-import IHashProvider from '@modules/users/infra/providers/HashProvider/models/IHashProvider';
+import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
   name: string,

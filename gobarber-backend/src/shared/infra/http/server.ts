@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
-import routes from './routes';
+import routes from '@shared/infra/http/routes';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
@@ -15,7 +15,7 @@ const server = express();
 
 server.use(cors());
 server.use(express.json());
-server.use('/files', express.static(uploadConfig.directory));
+server.use('/files', express.static(uploadConfig.uploadsFolder));
 server.use(routes);
 
 server.use((err: Error, request: Request, response: Response, _: NextFunction) => {
