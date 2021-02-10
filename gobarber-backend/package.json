@@ -36,7 +36,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/http-status-codes": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "date-fns": "^2.13.0",
