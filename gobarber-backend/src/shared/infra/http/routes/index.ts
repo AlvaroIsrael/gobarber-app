@@ -7,10 +7,10 @@ import uploadConfig from '@config/upload';
 
 const routes = Router();
 
-routes.use('/api/v1/files', express.static(uploadConfig.uploadsFolder));
-routes.use('/api/v1/appointments', appointmentsRouter);
-routes.use('/api/v1/users', usersRouter);
-routes.use('/api/v1/sessions', sessionsRouter);
-routes.use('/api/v1/password', passwordRouter);
+routes.use('/http/v1/files', express.static(uploadConfig.uploadsFolder));
+routes.use('/http/v1/appointments', appointmentsRouter);
+routes.use('/http/v1/users', usersRouter);
+routes.use('/http/v1/sessions', sessionsRouter);
+routes.use('/http/v1/password', passwordRouter);
 
 export default routes;
