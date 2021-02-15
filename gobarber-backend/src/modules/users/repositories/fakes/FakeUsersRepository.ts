@@ -7,11 +7,11 @@ class UsersRepository implements IUsersRepository {
   private users: User[] = [];
 
   public async findByEmail(email: string): Promise<User | undefined> {
-    return await this.users.find(user => user.email = email);
+    return await this.users.find(user => user.email === email);
   }
 
   public async findById(id: string): Promise<User | undefined> {
-    return await this.users.find(user => user.id = id);
+    return await this.users.find(user => user.id === id);
   }
 
   public async create({ name, email, password }: ICreateUserDto): Promise<User> {

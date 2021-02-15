@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
@@ -29,7 +31,6 @@ class AuthenticateUserService {
   }
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
-
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
