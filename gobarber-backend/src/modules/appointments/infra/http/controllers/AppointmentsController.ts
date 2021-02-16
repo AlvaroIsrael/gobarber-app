@@ -6,6 +6,7 @@ import * as HttpStatus from 'http-status-codes';
 
 class AppointmentsController {
   public async create(request: Request, response: Response): Promise<Response> {
+    const user_id = request.user.id;
     const { providerId, date } = request.body;
     const parsedDate = parseISO(date);
     const createAppointment = container.resolve(CreateAppointmentService);
@@ -13,6 +14,7 @@ class AppointmentsController {
     const appointment = await createAppointment.execute({
       date: parsedDate,
       providerId,
+      userId: user_id,
     });
 
     return response.status(HttpStatus.OK).json(appointment);
