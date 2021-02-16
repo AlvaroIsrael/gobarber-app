@@ -113,3 +113,5 @@ tmp/*
 !tmp/.gitkeep
 
 yarn.lock
+
+ormconfig.json
