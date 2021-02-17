@@ -29,7 +29,7 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
 
   return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
     status: 'error',
-    message: err.message //'Internal server error.',
+    message: 'Internal server error.',
   });
 });
 
