@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import * as HttpStatus from 'http-status-codes';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
+import { classToClass } from 'class-transformer';
 
 class SessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -14,9 +15,7 @@ class SessionsController {
       password,
     });
 
-    delete user.password;
-
-    return response.status(HttpStatus.OK).json({ user, token });
+    return response.status(HttpStatus.OK).json({ user: classToClass(user), token });
   }
 }
 
