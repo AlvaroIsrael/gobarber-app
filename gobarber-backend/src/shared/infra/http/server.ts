@@ -5,6 +5,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { errors } from 'celebrate';
 import 'express-async-errors';
+import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import * as HttpStatus from 'http-status-codes';
@@ -14,6 +15,7 @@ import '@shared/container';
 
 const server = express();
 
+server.use(rateLimiter);
 server.use(cors());
 server.use(express.json());
 server.use(routes);
@@ -33,6 +35,6 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
   });
 });
 
-server.listen(process.env.PORT, () => {
+server.listen(Number(process.env.PORT), () => {
   console.log('🔥 Server running on port 3333! 🔥');
 });
