@@ -5,6 +5,7 @@ import * as HttpStatus from 'http-status-codes';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import { inject, injectable } from 'tsyringe';
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 
 interface IRequest {
   providerId: string;
@@ -19,6 +20,8 @@ class CreateAppointmentService {
     private appointmentsRepository: IAppointmentsRepository,
     @inject('NotificationsRepository')
     private notificationsRepository: INotificationsRepository,
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider,
   ) {
   }
 
@@ -58,6 +61,10 @@ class CreateAppointmentService {
       recipient_id: providerId,
       content: `New appointment in ${dateFormatted}`,
     });
+
+    await this.cacheProvider.invalidate(
+      `provider-appointments:${providerId}:${format(appointmentDate, 'yyyy-M-d')}`,
+    );
 
     return appointment;
   }
