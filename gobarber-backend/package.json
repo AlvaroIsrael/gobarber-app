@@ -53,6 +53,7 @@
     "handlebars": "^4.7.6",
     "http-status-codes": "^1.4.0",
     "ioredis": "^4.22.0",
+    "redis": "^3.0.2",
     "jsonwebtoken": "^8.5.1",
     "mime": "^2.5.0",
     "mongodb": "^3.6.4",

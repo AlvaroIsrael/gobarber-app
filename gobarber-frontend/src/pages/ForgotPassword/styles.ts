@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
+
 import signInBackground from '../../assets/sign-in-background.png';
 
 export const Container = styled.div`
@@ -10,9 +11,9 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  place-content: center;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 700px;
 `;
@@ -30,10 +31,9 @@ const appearFromLeft = keyframes`
 
 export const AnimationContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-
   animation: ${appearFromLeft} 1s;
 
   form {
@@ -41,47 +41,40 @@ export const AnimationContainer = styled.div`
     width: 340px;
     text-align: center;
 
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #808080 inset !important;
-    }
-
     h1 {
       margin-bottom: 24px;
       font-family: 'Montserrat', sans-serif;
       font-weight: bolder;
     }
-
-    a {
-      color: #fff;
-      display: block;
-      margin-top: 24px;
-      text-decoration: none;
-      transition: color 0.2s;
-
-      &:hover {
-        color: ${shade(0.2, '#ffffff')};
-      }
-    }
   }
 
-  > a {
-    color: #fff;
+  a {
+    color: #ffffff;
+    display: block;
     margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
-    display: flex;
-    align-items: center;
 
     &:hover {
-      color: ${shade(0.2, '#ffffff')};
+      color: ${shade(0.2, '#f4ede8')};
     }
+  }
+}
 
-    svg {
-      margin-right: 16px;
-    }
+> a {
+  color: #ffffff;
+  margin-top: 24px;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 16px;
+  }
+
+  &:hover {
+    color: ${shade(0.2, '#ffffff')};
   }
 `;
 
