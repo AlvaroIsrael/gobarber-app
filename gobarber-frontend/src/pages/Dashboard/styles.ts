@@ -254,13 +254,14 @@ export const Calendar = styled.aside`
 
   .DayPicker-Day--available:not(.DayPicker-Day--outside) {
     background: #808080;
-    border-radius: 10px;
+    border-radius: 50px;
     color: #fff;
   }
 
-  .DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker:not(.DayPicker--interactionDisabled) {
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-    background: ${shade(0.2, '#262626')};
+      background: ${shade(0.2, '#393939')};
+    }
   }
 
   .DayPicker-Day--today {
@@ -286,7 +287,7 @@ export const Calendar = styled.aside`
 
   .DayPicker-Day--selected {
     background: #0f43a9 !important;
-    border-radius: 10px;
+    border-radius: 50px;
     color: #ffffff !important;
     font-weight: bold;
   }

@@ -62,7 +62,7 @@ const Dashboard: FC = () => {
           <NextAppointment>
             <strong>Atendimento a seguir</strong>
             <div>
-              <img src="/avatar_url" alt="Nome do usuário" />
+              <img src="/avatar_url" alt="User avatar" />
 
               <strong>Nome do usuário</strong>
               <span>
@@ -81,7 +81,7 @@ const Dashboard: FC = () => {
               </span>
 
               <div>
-                <img src="/avatar_url" alt="Nome do usuário" />
+                <img src="/avatar_url" alt="User avatar" />
 
                 <strong>Nome do usuário</strong>
               </div>
@@ -94,7 +94,7 @@ const Dashboard: FC = () => {
               </span>
 
               <div>
-                <img src="/avatar_url" alt="Nome do usuário" />
+                <img src="/avatar_url" alt="User avatar" />
 
                 <strong>Nome do usuário</strong>
               </div>
@@ -111,7 +111,7 @@ const Dashboard: FC = () => {
               </span>
 
               <div>
-                <img src="/avatar_url" alt="Nome do usuário" />
+                <img src="/avatar_url" alt="User avatar" />
 
                 <strong>Nome do usuário</strong>
               </div>
