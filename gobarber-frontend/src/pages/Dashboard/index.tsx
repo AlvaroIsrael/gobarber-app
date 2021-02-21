@@ -1,7 +1,7 @@
 import React, { FC, useState, useCallback } from 'react';
 import { FiClock, FiPower } from 'react-icons/fi';
 import DayPicker, { DayModifiers } from 'react-day-picker';
-import '../../../node_modules/react-day-picker/lib/style.css';
+import 'react-day-picker/lib/style.css';
 
 import { useAuth } from '../../hooks/auth';
 
