@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div``;
 
@@ -225,4 +226,68 @@ export const Appointment = styled.div`
 
 export const Calendar = styled.aside`
   width: 380px;
+
+  .DayPicker {
+    background: #393939;
+    border-radius: 10px;
+  }
+
+  .DayPicker-wrapper {
+    padding-bottom: 0;
+  }
+
+  .DayPicker,
+  .DayPicker-Month {
+    width: 100%;
+  }
+
+  .DayPicker-Month {
+    border-collapse: separate;
+    border-spacing: 8px;
+    margin: 16px;
+  }
+
+  .DayPicker-Day {
+    width: 40px;
+    height: 40px;
+  }
+
+  .DayPicker-Day--available:not(.DayPicker-Day--outside) {
+    background: #808080;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .DayPicker:not(.DayPicker--interactionDisabled)
+    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+    background: ${shade(0.2, '#262626')};
+  }
+
+  .DayPicker-Day--today {
+    font-weight: normal;
+  }
+
+  .DayPicker-Weekday {
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .DayPicker-Caption > div {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.15em;
+  }
+
+  .DayPicker-Day--disabled {
+    color: #ffffff !important;
+    background: transparent !important;
+  }
+
+  .DayPicker-Day--selected {
+    background: #0f43a9 !important;
+    border-radius: 10px;
+    color: #ffffff !important;
+    font-weight: bold;
+  }
 `;
