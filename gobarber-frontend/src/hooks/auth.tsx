@@ -1,9 +1,15 @@
 import React, { createContext, PropsWithChildren, ReactNode, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  name: string;
+  avatar_url: string;
+}
+
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -12,7 +18,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextState {
-  user: object;
+  user: User;
 
   signIn(credentials: SignInCredentials): Promise<void>;
 
@@ -35,7 +41,7 @@ const getDataFromLocalStorage = (): AuthState => {
 export const AuthProvider: React.FC = ({ children }: PropsWithChildren<ReactNode>) => {
   const [data, setData] = useState<AuthState>(getDataFromLocalStorage);
   const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post<AuthState>('sessions', { email, password });
+    const response = await api.post<AuthState>('/api/v1/sessions', { email, password });
     const { token, user } = response.data;
 
     localStorage.setItem('@GoBarber:token', token);
