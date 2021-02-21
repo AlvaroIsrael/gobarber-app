@@ -1,14 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { FiClock, FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
 
-import { Container, Header, HeaderContent, Profile, Content, Schedule, NextAppointment, Calendar } from './styles';
+import {
+  Container,
+  Header,
+  HeaderContent,
+  Profile,
+  Content,
+  Schedule,
+  NextAppointment,
+  Section,
+  Appointment,
+  Calendar,
+} from './styles';
 
 import logoImg from '../../assets/logo.svg';
 
 const Dashboard: FC = () => {
   const { signOut, user } = useAuth();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
     <Container>
@@ -51,6 +63,52 @@ const Dashboard: FC = () => {
               </span>
             </div>
           </NextAppointment>
+          <Section>
+            <strong>Manhã</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img src="/avatar_url" alt="Nome do usuário" />
+
+                <strong>Nome do usuário</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img src="/avatar_url" alt="Nome do usuário" />
+
+                <strong>Nome do usuário</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img src="/avatar_url" alt="Nome do usuário" />
+
+                <strong>Nome do usuário</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
 
         <Calendar />
