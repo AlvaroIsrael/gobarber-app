@@ -50,6 +50,8 @@ export const AnimationContainer = styled.div`
 
     h1 {
       margin-bottom: 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bolder;
     }
 
     a {

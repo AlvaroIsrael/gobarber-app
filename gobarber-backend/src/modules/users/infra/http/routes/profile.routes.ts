@@ -12,7 +12,8 @@ profileRouter.use(ensureAuthenticated);
 
 profileRouter.get('/', profileController.show);
 
-profileRouter.put('/',
+profileRouter.put(
+  '/',
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
@@ -22,11 +23,13 @@ profileRouter.put('/',
         is: Joi.exist(),
         then: Joi.required(),
       }),
-      password_confirmation: Joi.when('password', {
+      passwordConfirmation: Joi.when('password', {
         is: Joi.exist(),
         then: Joi.valid(Joi.ref('password')).required(),
       }),
     },
-  }), profileController.update);
+  }),
+  profileController.update,
+);
 
 export default profileRouter;
