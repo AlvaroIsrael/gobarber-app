@@ -1,12 +1,12 @@
 {
-  "name": "backend-desafio",
-  "version": "1.0.0",
+  "name": "gobarber-backend",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/shared/infra/http/server.ts",
     "build": "tsc",
-    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --watch swagger.yaml src/shared/infra/http/server.ts",
     "test": "jest",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
@@ -24,6 +24,8 @@
     "@types/nodemailer": "^6.4.0",
     "@types/redis": "^2.8.28",
     "@types/supertest": "^2.0.8",
+    "@types/swagger-ui-express": "^4.1.2",
+    "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
@@ -53,7 +55,6 @@
     "handlebars": "^4.7.6",
     "http-status-codes": "^1.4.0",
     "ioredis": "^4.22.0",
-    "redis": "^3.0.2",
     "jsonwebtoken": "^8.5.1",
     "mime": "^2.5.0",
     "mongodb": "^3.6.4",
@@ -61,9 +62,12 @@
     "nodemailer": "^6.4.17",
     "pg": "^8.1.0",
     "rate-limiter-flexible": "^2.2.1",
+    "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6",
     "tsyringe": "^4.4.0",
     "typeorm": "^0.2.24",
-    "uuidv4": "^6.0.7"
+    "uuidv4": "^6.0.7",
+    "yamljs": "^0.3.0"
   }
 }

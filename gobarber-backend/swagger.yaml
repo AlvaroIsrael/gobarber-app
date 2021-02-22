@@ -1,0 +1,169 @@
+swagger: '2.0'
+info:
+  version: 0.1.0
+  title: GoBarber API
+  description: GoBarber API for https://gobarberapp.net
+  termsOfService: 'https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/README.md'
+  contact:
+    email: israel.nunes.leite@gmail.com
+  license:
+    name: MIT
+    url: 'https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/LICENSE.md'
+
+securityDefinitions:
+  JWT:
+    description: ''
+    type: apiKey
+    name: Authorization
+    in: header
+
+host: 'localhost:3333'
+
+basePath: /api/v1
+
+tags:
+  - name: Files
+    description: Operations about files.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Appointments
+    description: Operations about appointments.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Providers
+    description: Operations about providers.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Users
+    description: Operations about users.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Sessions
+    description: Operations about sessions.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Password
+    description: Operations about password recovery.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Profile
+    description: Operations about password reset.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+  - name: Docs
+    description: Information about app routes using swagger.
+    externalDocs:
+      description: Find out more at
+      url: 'http://swagger.io'
+
+schemes:
+  - http
+  - https
+
+definitions:
+  Sessions:
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: 'docs@gobarberapp.net'
+      password:
+        type: string
+        example: 'pass321456'
+  ValidationError:
+    properties:
+      statusCode:
+        type: integer
+      error:
+        type: string
+      message:
+        type: string
+      validation:
+        type: object
+        properties:
+          body:
+            type: object
+            properties:
+              source:
+                type: string
+              keys:
+                type: array
+              message:
+                type: string
+    example:
+      statusCode: 400
+      error: 'Bad Request'
+      message: 'celebrate request validation failed'
+      validation: {
+        body: {
+          source: 'body',
+          keys: [ 'email' ],
+          message: 'email is required',
+        }
+      }
+
+paths:
+  /api/v1/sessions:
+    post:
+      tags:
+        - Sessions
+      summary: Return a JWT token for an authenticated user.
+      description: "Return a json object containing user info and JWT token after user authenticated itself in the app."
+      parameters:
+        - in: body
+          name: body
+          description: New Session
+          required: true
+          schema:
+            $ref: '#/definitions/Sessions'
+      responses:
+        '400':
+          description: When validation error occurs.
+          schema:
+            $ref: '#/definitions/ValidationError'
+
+        '200':
+          description: When all parameters are ok.
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  avatar:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  avatar_url:
+                    type: string
+              token:
+                type: string
+            example:
+              user: {
+                id: '16463316-155d-43b8-841d-263a74613c64',
+                name: 'Go Barber',
+                email: 'test@gobarberapp.net',
+                avatar: '4dfcbdea62cdcbc5ba8d-8402007.png',
+                created_at: '2021-02-17T19:20:48.506Z',
+                updated_at: '2021-02-20T23:27:28.342Z',
+                avatar_url: 'https://gobarberapp.net.s3.amazonaws.com/4dfcbdea62cdcbc5ba8d-8402007.png',
+              }
+              name: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5MjQ0NzIsImV4cCI6MTYxNDAxMDg3Miwic3ViIjoiMTY0NjMzMTYtMTU1ZC00M2I4LTg0MWQtMjYzYTc0NjEzYzY0In0.kjKz3eBXMJcUpchM2wSXTTSVrAbLRO_tAF2166-vh4o'
+      security: [ ]
