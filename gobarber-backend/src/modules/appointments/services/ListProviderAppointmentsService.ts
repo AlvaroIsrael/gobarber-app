@@ -27,7 +27,7 @@ class ListProviderAppointmentsService {
 
     let appointments = await this.cacheProvider.find<Appointment[]>(cacheKey);
 
-    if (!appointments) {
+    if (!appointments || appointments.length === 0) {
       appointments = await this.appointmentsRepository.findAllInDayFromProvider({
         provider_id,
         day,
