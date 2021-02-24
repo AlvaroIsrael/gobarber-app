@@ -15,9 +15,9 @@ import '@shared/container';
 
 const server = express();
 
-server.use(rateLimiter);
 server.use(cors());
 server.use(express.json());
+server.use(rateLimiter);
 server.use(routes);
 server.use(errors());
 

@@ -6,12 +6,12 @@ import * as HttpStatus from 'http-status-codes';
 class AppointmentsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id;
-    const { providerId, date } = request.body;
+    const { provider_id, date } = request.body;
     const createAppointment = container.resolve(CreateAppointmentService);
 
     const appointment = await createAppointment.execute({
       date,
-      providerId,
+      providerId: provider_id,
       userId: user_id,
     });
 
