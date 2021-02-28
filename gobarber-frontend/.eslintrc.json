@@ -30,6 +30,7 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": "off",
     "import/no-duplicates": "off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [
