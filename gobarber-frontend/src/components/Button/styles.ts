@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {shade} from 'polished';
+import { shade } from 'polished';
 
 export const Container = styled.button`
   height: 56px;
