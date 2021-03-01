@@ -7,7 +7,9 @@ import cacheConfig from '@config/cache';
 
 const redisClient = redis.createClient(cacheConfig.config.redis as ClientOpts);
 
-redisClient.on('error', (e) => console.log('DEBUG' + e.toString() + '' + cacheConfig.config.redis));
+redisClient.on('error', () => {
+  throw new AppError('Redis internal error, contact the developer.', 500);
+});
 
 const limiter = new RateLimiterRedis({
   storeClient: redisClient,
@@ -21,6 +23,6 @@ export default async function rateLimiter(request: Request, response: Response, 
     await limiter.consume(request.ip);
     return next();
   } catch (err) {
-    throw new AppError('Too many requests', 429);
+    throw new AppError('Too many requests.', 429);
   }
 }
