@@ -46,11 +46,9 @@ jobs:
         run: cd gobarber-backend && yarn
 
       - name: Run tests
-        uses: mattallty/jest-github-action@v1
+        run: yarn test
         env:
           APP_SECRET: ${{ secrets.APP_SECRET }}
-        with:
-          test-command: "cd gobarber-backend && yarn test"
 
       - name: Run build
         run: cd gobarber-backend && yarn build
