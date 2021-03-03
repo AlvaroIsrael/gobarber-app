@@ -27,7 +27,7 @@ jobs:
         uses: github/codeql-action/analyze@v1
 
       - name: Setup Node.js enviroment
-        uses: actions/setup-node@v1.4.2
+        uses: actions/setup-node@v2.277.1
         with:
           node-version: 14.x
 
