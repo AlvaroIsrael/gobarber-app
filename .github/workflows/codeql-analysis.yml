@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["javascript", "typescript"]
+        language: ["typescript"]
 
     steps:
       - name: Checkout repository
@@ -43,7 +43,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn
+        run: cd gobarber-backend && yarn
 
       - name: Run tests
         run: yarn test
