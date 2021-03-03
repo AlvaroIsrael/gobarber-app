@@ -46,7 +46,7 @@ jobs:
         run: cd gobarber-backend && yarn
 
       - name: Run tests
-        run: yarn test
+        run: cd gobarber-backend && yarn test
         env:
           APP_SECRET: ${{ secrets.APP_SECRET }}
 
