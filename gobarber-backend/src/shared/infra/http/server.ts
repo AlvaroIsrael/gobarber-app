@@ -31,10 +31,10 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
 
   return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
     status: 'error',
-    message: err.message //'Internal server error.',
+    message: 'Internal server error.',
   });
 });
 
 server.listen(Number(process.env.PORT), () => {
-  console.log('🔥 Server running on port 3333! 🔥');
+  console.log(`🔥 Server running on port ${process.env.PORT}! 🔥`);
 });
