@@ -58,7 +58,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          ssh: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: ".,!node_modules,!.env,!.ormconfig.json"
           target: "~/apps/gobarber-app/gobarber-backend"
@@ -68,7 +68,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          ssh: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/apps/gobarber-app/gobarber-backend
