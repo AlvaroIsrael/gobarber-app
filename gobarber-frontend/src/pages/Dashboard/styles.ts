@@ -6,6 +6,8 @@ export const Container = styled.div``;
 export const Header = styled.header`
   padding: 32px 0;
   background: #393939;
+  height: 140px;
+  min-width: 895px;
 `;
 
 export const HeaderContent = styled.div`
@@ -74,11 +76,13 @@ export const Content = styled.main`
   max-width: 1120px;
   margin: 64px auto;
   display: flex;
+  min-width: 800px;
 `;
 
 export const Schedule = styled.div`
   flex: 1;
   margin-right: 120px;
+  min-width: 380px;
 
   h1 {
     font-size: 36px;
@@ -240,6 +244,7 @@ export const Appointment = styled.div`
 
 export const Calendar = styled.aside`
   width: 380px;
+  min-width: 380px;
 
   .DayPicker {
     background: #393939;
