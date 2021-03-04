@@ -155,11 +155,18 @@ const Profile: React.FC = () => {
             icon={FiLock}
             type="password"
             placeholder="Senha atual"
+            autoComplete="current-password"
           />
 
-          <Input name="password" icon={FiLock} type="password" placeholder="Nova senha" />
+          <Input name="password" icon={FiLock} type="password" placeholder="Nova senha" autoComplete="new-password" />
 
-          <Input name="password_confirmation" icon={FiLock} type="password" placeholder="Confirmar senha" />
+          <Input
+            name="password_confirmation"
+            icon={FiLock}
+            type="password"
+            placeholder="Confirmar senha"
+            autoComplete="new-password"
+          />
 
           <Button type="submit">Confirmar alterações</Button>
         </Form>
