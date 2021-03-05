@@ -78,6 +78,6 @@ $ yarn install
 $ yarn start
 ```
 
-## 🧾 Licence
+## 🧾 License
 
 This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
