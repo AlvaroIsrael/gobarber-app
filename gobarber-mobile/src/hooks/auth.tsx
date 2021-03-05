@@ -10,9 +10,16 @@ import React, {
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar_url: string;
+}
+
 interface AuthState {
   token: string;
-  user: Record<string, unknown>;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -21,7 +28,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextState {
-  user: Record<string, unknown>;
+  user: User;
 
   loading: boolean;
 
@@ -52,7 +59,7 @@ export const AuthProvider: React.FC = ({ children }: PropsWithChildren<ReactNode
   }, []);
 
   const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post<AuthState>('sessions', { email, password });
+    const response = await api.post<AuthState>('/api/v1/sessions', { email, password });
     const { token, user } = response.data;
 
     await AsyncStorage.setItem('@GoBarber:token', token);
