@@ -4,8 +4,6 @@
     <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
   </a>
   <br>
-  Go Barber App
-  <br>
   https://gobarberapp.net/
 </h1>
 
@@ -13,7 +11,7 @@
 <h5 align="center">It was build as part of a programming course taught by Rocketseat.</h5>
 
 <div align="center">
-  [![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
+  ![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
 </div>
 
 <p align="center">
@@ -22,8 +20,7 @@
   <a href="#license">License</a>
 </p>
 
-<p align="center">Made with ❤️ by Alvaro Israel 👏🏻 [Get in touch!](https://www.linkedin.com/in/alvaroisraeldesenvolvedor/)</p>
-<p align="center">**Enjoy!**</p>
+<p align="center">Made with ❤️ by Alvaro Israel 👏🏻 <a href="https://www.linkedin.com/in/alvaroisraeldesenvolvedor/">Get in Touch!</a></p>
 
 ![Go Barber App](https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarber-tutorial.gif)
 
@@ -84,6 +81,6 @@ $ yarn install
 $ yarn start
 ```
 
-## 📑 Licence
+## 🧾 Licence
 
 This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
