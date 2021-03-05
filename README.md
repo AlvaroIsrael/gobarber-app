@@ -4,20 +4,17 @@
     <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
   </a>
   <br>
-  https://gobarberapp.net/
 </h1>
+
+[![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
 
 <h4 align="center">A concept (yet fully functional) barber shop app!</h4>
 <h5 align="center">It was build as part of a programming course taught by Rocketseat.</h5>
 
-<div align="center">
-  ![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
-</div>
-
 <p align="center">
-  <a href="#technologies-used">Technologies Used</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#license">License</a>
+  <a href="#-technologies-used">Technologies Used</a> •
+  <a href="#-how-to-use">How To Use</a> •
+  <a href="#-license">License</a>
 </p>
 
 <p align="center">Made with ❤️ by Alvaro Israel 👏🏻 <a href="https://www.linkedin.com/in/alvaroisraeldesenvolvedor/">Get in Touch!</a></p>
