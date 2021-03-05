@@ -24,7 +24,6 @@ const Dashboard: React.FC = () => {
     api
       .get('/api/v1/providers')
       .then(response => {
-        console.log(response);
         setProviders(response.data);
       })
       .catch(() => setProviders([]));
