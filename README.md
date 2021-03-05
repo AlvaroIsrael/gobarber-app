@@ -1,47 +1,89 @@
 <h1 align="center">
-    <img  alt="goBarber"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/logo.svg"/>
+  <br>
+  <a href="https://gobarberapp.net">
+    <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
+  </a>
+  <br>
+  Go Barber App
+  <br>
+  https://gobarberapp.net/
 </h1>
 
-## 💈 What is it?
+<h4 align="center">A concept (yet fully functional) barber shop app!</h4>
+<h5 align="center">It was build as part of a programming course taught by Rocketseat.</h5>
 
-<b>GoBarber</b>
-It's a concept barber shop app (and yet fully functional).
-It is part of a programming course taught by Rocketseat.
+<div align="center">
+  [![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
+</div>
 
-## 🏆 Technologies used:
+<p align="center">
+  <a href="#technologies-used">Technologies Used</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#license">License</a>
+</p>
 
-- [React](https://github.com/facebook/react)
+<p align="center">Made with ❤️ by Alvaro Israel 👏🏻 [Get in touch!](https://www.linkedin.com/in/alvaroisraeldesenvolvedor/)</p>
+<p align="center">**Enjoy!**</p>
+
+![Go Barber App](https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarber-tutorial.gif)
+
+## 🏆 Technologies Used
+
 - [Node](https://nodejs.org/en/)
+- [React](https://github.com/facebook/react/)
+- [ReactNative](https://github.com/facebook/react-native/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [ExpressJs](https://expressjs.com/)
 - [JestJs](https://jestjs.io/)
 
-## 💻 How to run?
+## 💻 How to Use
 
-### <b>Frontend</b>
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
-cd gobarber-frontend
-yarn install
-yarn start
+# Clone this repository
+$ git clone https://github.com/AlvaroIsrael/gobarber-app.git
+
+# Go into the main app folder
+$ cd gobarber-app
+```
+
+### <b>Frontend</b>
+```bash
+# Go into frontend folder
+$ cd gobarber-frontend
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn start
 ```
 
 ### <b>Backend</b>
-
 ```bash
-cd gobarber-backend
-yarn install
-yarn dev:server
+# Go into backend folder
+$ cd gobarber-backend
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn dev:server
 ```
 
 ### <b>Mobile</b>
-
 ```bash
-cd gobarber-mobile
-yarn install
-yarn start
+# Go into mobile folder
+$ cd gobarber-mobile
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn start
 ```
 
-### 📑 Licence
+## 📑 Licence
 
 This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
