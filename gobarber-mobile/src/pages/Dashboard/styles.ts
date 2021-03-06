@@ -45,10 +45,10 @@ export const ProvidersList = styled(FlatList as new () => FlatList<Provider>).at
 })``;
 
 export const ProvidersListTitle = styled.Text`
-  font-family: ${'Montserrat-Regular'};
+  font-family: ${'Montserrat-Medium'};
   color: #ffffff;
-  font-size: 24px;
-  margin-bottom: 24px;
+  font-size: 20px;
+  margin-bottom: 12px;
 `;
 
 export const ProviderContainer = styled(RectButton)`
@@ -56,7 +56,7 @@ export const ProviderContainer = styled(RectButton)`
   align-items: center;
   padding: 20px;
   margin-bottom: 16px;
-  background: #3e3b47;
+  background: #393939;
   border-radius: 10px;
 `;
 
@@ -85,6 +85,6 @@ export const ProviderMeta = styled.View`
 
 export const ProviderMetaText = styled.Text`
   margin-left: 8px;
-  color: #393939;
-  font-family: ${'Montserrat-Regular'};
+  color: #ffffff;
+  font-family: ${'VarelaRound-Regular'};
 `;

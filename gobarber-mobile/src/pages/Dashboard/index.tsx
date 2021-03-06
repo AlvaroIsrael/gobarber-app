@@ -1,8 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Icon from 'react-native-vector-icons/Feather';
+
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../../hooks/auth';
-import { Container, Header, HeaderTitle, UserName, ProfileButton, UserAvatar, ProvidersList } from './styles';
 import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+import {
+  Container,
+  Header,
+  HeaderTitle,
+  UserName,
+  ProfileButton,
+  UserAvatar,
+  ProvidersList,
+  ProvidersListTitle,
+  ProviderContainer,
+  ProviderAvatar,
+  ProviderInfo,
+  ProviderName,
+  ProviderMeta,
+  ProviderMetaText,
+} from './styles';
 
 export interface Provider {
   id: string;
@@ -18,7 +35,7 @@ const Dashboard: React.FC = () => {
   const navigateToProfile = useCallback(() => {
     /* navigation.navigate('Profile'); */
     signOut();
-  }, [navigation, signOut]);
+  }, [signOut]);
 
   useEffect(() => {
     api
@@ -47,14 +64,31 @@ const Dashboard: React.FC = () => {
         <ProfileButton onPress={navigateToProfile}>
           <UserAvatar source={{ uri: user.avatar_url }} />
         </ProfileButton>
-
-        <ProvidersList
-          keyExtractor={provider => provider.id}
-          data={providers}
-          renderItem={({ item }) => <UserName>{item.name}</UserName>}
-        />
       </Header>
+
+      <ProvidersList
+        data={providers}
+        keyExtractor={provider => provider.id}
+        ListHeaderComponent={<ProvidersListTitle>Cabeleireiros</ProvidersListTitle>}
+        renderItem={({ item: provider }) => (
+          <ProviderContainer onPress={() => handleSelectProvider(provider.id)}>
+            <ProviderAvatar source={{ uri: provider.avatar_url }} />
+            <ProviderInfo>
+              <ProviderName>{provider.name}</ProviderName>
+              <ProviderMeta>
+                <Icon name='calendar' size={14} color='#808080' />
+                <ProviderMetaText>Segunda à sexta</ProviderMetaText>
+              </ProviderMeta>
+              <ProviderMeta>
+                <Icon name='clock' size={14} color='#808080' />
+                <ProviderMetaText>8h às 18h</ProviderMetaText>
+              </ProviderMeta>
+            </ProviderInfo>
+          </ProviderContainer>
+        )}
+      />
     </Container>
   );
 };
+
 export default Dashboard;
