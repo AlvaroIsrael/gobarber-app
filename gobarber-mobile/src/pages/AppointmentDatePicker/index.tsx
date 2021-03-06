@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Platform, Alert } from 'react-native';
 
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { Alert } from 'react-native';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import {
@@ -28,6 +28,8 @@ import {
   HourText,
   CreateAppointmentButton,
   CreateAppointmentButtonText,
+  OpenDatePickerButton,
+  OpenDatePickerButtonText,
 } from './styles';
 
 export interface Provider {
@@ -63,6 +65,7 @@ const AppointmentDatePicker: React.FC = () => {
     return today;
   }, []);
 
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(minimumDate);
   const [selectedHour, setSelectedHour] = useState(0);
 
@@ -132,6 +135,19 @@ const AppointmentDatePicker: React.FC = () => {
       }));
   }, [availability]);
 
+  const handleToggleDatePicker = useCallback(() => {
+    setShowDatePicker(state => !state);
+  }, []);
+
+  const handleDateChanged = useCallback((event: Event, date?: Date) => {
+    if (Platform.OS === 'android') {
+      setShowDatePicker(false);
+    }
+    if (date) {
+      setSelectedDate(date);
+    }
+  }, []);
+
   return (
     <>
       <Header>
@@ -161,14 +177,22 @@ const AppointmentDatePicker: React.FC = () => {
         <Calendar>
           <Title>Escolha a data</Title>
 
-          <DateTimePicker
-            mode='date'
-            is24Hour={true}
-            display='inline'
-            value={selectedDate}
-            onChange={(event: Event, date?: Date) => date && setSelectedDate(date)}
-            minimumDate={minimumDate}
-          />
+          <OpenDatePickerButton onPress={handleToggleDatePicker}>
+            <OpenDatePickerButtonText>Selecionar outra data</OpenDatePickerButtonText>
+          </OpenDatePickerButton>
+
+          {showDatePicker && (
+            <DateTimePicker
+              {...(Platform.OS === 'ios' && { textColor: '#ffffff' })}
+              locale={'pt-br'}
+              is24Hour
+              mode='date'
+              display={`${Platform.OS === 'android' ? 'calendar' : 'inline'}`}
+              value={selectedDate}
+              onChange={handleDateChanged}
+              minimumDate={minimumDate}
+            />
+          )}
         </Calendar>
 
         <Schedule>

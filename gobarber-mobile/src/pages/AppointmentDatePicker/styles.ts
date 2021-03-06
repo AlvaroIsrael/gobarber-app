@@ -148,3 +148,18 @@ export const CreateAppointmentButtonText = styled.Text`
   font-size: 18px;
   font-family: ${'VarelaRound-Regular'};
 `;
+
+export const OpenDatePickerButton = styled(RectButton)`
+  height: 46px;
+  background: #0f43a9;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 24px;
+`;
+
+export const OpenDatePickerButtonText = styled.Text`
+  color: #ffffff;
+  font-family: ${'VarelaRound-Regular'};
+  font-size: 18px;
+`;
