@@ -4,6 +4,8 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Container, Content, AnimationContainer, Background } from './styles';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
@@ -11,6 +13,7 @@ import Button from '../../components/Button';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
+import signInBackground from '../../assets/sign-in-background.webp';
 
 interface SignInFormData {
   email: string;
@@ -84,7 +87,9 @@ const SignIn: React.FC = () => {
           </Link>
         </AnimationContainer>
       </Content>
-      <Background />
+      <Background>
+        <LazyLoadImage alt="Go Barber Background" src={signInBackground} effect="blur" />
+      </Background>
     </Container>
   );
 };
