@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
-import signOutBackground from '../../assets/sign-out-background.png';
+import signOutBackground from '../../assets/sign-out-background.webp';
 
 export const Container = styled.div`
   height: 100vh;

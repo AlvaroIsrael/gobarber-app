@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
-import signInBackground from '../../assets/sign-in-background.png';
 
 export const Container = styled.div`
   height: 100vh;
@@ -86,7 +85,20 @@ export const AnimationContainer = styled.div`
 `;
 
 export const Background = styled.div`
-  flex: 1;
-  background: url(${signInBackground}) no-repeat center;
-  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+
+  span {
+    width: 100%;
+
+    img {
+      object-fit: cover;
+      height: 200%;
+      width: 100%;
+    }
+  }
 `;
