@@ -30,6 +30,7 @@ export const OkButton = styled(RectButton)`
   align-items: center;
   border-radius: 10px;
   margin-top: 24px;
+  font-family: ${'VarelaRound-Regular'};
 `;
 
 export const OkButtonText = styled.Text`
