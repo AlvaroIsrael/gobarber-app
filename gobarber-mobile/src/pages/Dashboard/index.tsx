@@ -33,9 +33,8 @@ const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
 
   const navigateToProfile = useCallback(() => {
-    /* navigation.navigate('Profile'); */
-    signOut();
-  }, [signOut]);
+    navigation.navigate('Profile');
+  }, [navigation]);
 
   useEffect(() => {
     api

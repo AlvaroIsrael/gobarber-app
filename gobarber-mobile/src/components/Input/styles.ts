@@ -36,7 +36,7 @@ export const TextInput = styled.TextInput`
   flex: 1;
   color: #232323;
   font-size: 16px;
-  font-family: 'RobotoSlab-Medium';
+  font-family: ${'VarelaRound-Regular'};
 `;
 
 export const Icon = styled(FeatherIcon)`
