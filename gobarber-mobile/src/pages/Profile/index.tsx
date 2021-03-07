@@ -90,7 +90,7 @@ const Profile: React.FC = () => {
         Alert.alert('Erro ao atualizar o perfil', 'Ocorreu um erro ao atualizar o perfil, tente novamente.');
       }
     },
-    [navigation],
+    [navigation, updateUser],
   );
 
   return (
