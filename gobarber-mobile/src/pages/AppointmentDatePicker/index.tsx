@@ -101,6 +101,11 @@ const AppointmentDatePicker: React.FC = () => {
     try {
       const date = new Date(selectedDate);
 
+      if (!selectedHour) {
+        Alert.alert('Erro ao criar agendamento', 'Selecione um horário e tente novamente!');
+        return;
+      }
+
       date.setHours(selectedHour);
       date.setMinutes(0);
 
