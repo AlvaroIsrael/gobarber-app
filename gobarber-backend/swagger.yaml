@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
   version: 0.1.0
   title: GoBarber API
@@ -10,16 +10,13 @@ info:
     name: MIT
     url: 'https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/LICENSE.md'
 
-securityDefinitions:
-  JWT:
-    description: 'JWT Bearer'
-    type: apiKey
-    name: Authorization
-    in: header
-
-host: 'localhost:3333'
-
-basePath: /api/v1
+servers:
+  - url: http://localhost:3333/api/v1
+    description: Development server
+  - url: https://localhost:3333/api/v1
+    description: Development server
+  - url: https://backend.gobarberapp.net/api/v1
+    description: Production server
 
 tags:
   - name: Files
@@ -42,264 +39,506 @@ tags:
   - name: Docs
     description: Information about app routes using swagger.
 
-schemes:
-  - http
-  - https
-
-definitions:
-  Users:
-    required:
-      - name
-      - email
-      - password
-    properties:
-      name:
-        type: string
-      email:
-        type: string
-      password:
-        type: string
-    example:
-      name: 'Go Barber User'
-      example: 'docs@gobarberapp.net'
-      password: 'pass321456'
-  Sessions:
-    required:
-      - email
-      - password
-    properties:
-      email:
-        type: string
-      password:
-        type: string
-    example:
-      email: 'docs@gobarberapp.net'
-      password: 'pass321456'
-  InternalServerError:
-    properties:
-      status:
-        type: string
-      message:
-        type: string
-    example:
-      status: 'error'
-      message: 'Internal server error.'
-  UnauthorizedError:
-    properties:
-      status:
-        type: string
-      message:
-        type: string
-    example:
-      status: 'error'
-      message: 'Missing JWT token.'
-  MailAreadyUsedError:
-    properties:
-      status:
-        type: string
-      message:
-        type: string
-    example:
-      status: 'error'
-      message: 'Email already used.'
-  ValidationError:
-    properties:
-      statusCode:
-        type: integer
-      error:
-        type: string
-      message:
-        type: string
-      validation:
-        type: object
-        properties:
-          body:
-            type: object
-            properties:
-              source:
-                type: string
-              keys:
-                type: array
-              message:
-                type: string
-    example:
-      statusCode: 400
-      error: 'Bad Request'
-      message: 'celebrate request validation failed'
-      validation: {
-        body: {
-          source: 'body',
-          keys: [ 'validated field' ],
-          message: 'validated field is required',
+components:
+  securitySchemes:
+    JWT:
+      description: 'JWT Bearer'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    Appointments:
+      required:
+        - provider_id
+        - date
+      properties:
+        provider_id:
+          type: string
+        date:
+          type: string
+      example:
+        provider_id: '4129c527-67c1-4fc4-a091-526011d74a48'
+        date: '2021-03-09 09:00:00'
+    Users:
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: 'Go Barber User'
+        example: 'docs@gobarberapp.net'
+        password: 'pass321456'
+    Sessions:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: 'docs@gobarberapp.net'
+        password: 'pass321456'
+    InternalServerError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Internal server error.'
+    UnauthorizedError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Missing JWT token.'
+    MailAreadyUsedError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Email already used.'
+    AppointmentAlreadyBookedError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'This appointment is already booked.'
+    AppointmentPastDateError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'You cant create an appointment on a past date.'
+    AppointmentWithYourselfError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'You cant create an appointment with yourself.'
+    AppointmentOutOfBoundariesError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'You can only create appointments between 8am and 5pm.'
+    ValidationError:
+      properties:
+        statusCode:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        validation:
+          type: object
+          properties:
+            body:
+              type: object
+              properties:
+                source:
+                  type: string
+                keys:
+                  type: array
+                message:
+                  type: string
+      example:
+        statusCode: 400
+        error: 'Bad Request'
+        message: 'celebrate request validation failed'
+        validation: {
+          body: {
+            source: 'body',
+            keys: [ 'validated field' ],
+            message: 'validated field is required',
+          }
         }
-      }
 
 paths:
+  /appointments/me:
+    get:
+      tags:
+        - Appointments
+      summary: Return info from newly created appointment.
+      description: 'Return an array of all appointments.'
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  provider_id:
+                    type: string
+                  user_id:
+                    type: string
+                  date:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      avatar:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      avatar_url:
+                        type: string
+              examples:
+                With data return:
+                  value:
+                    [ {
+                      "id": "21ae27fc-e3ab-437e-afc5-93bddea31456",
+                      "provider_id": "16463316-155d-43b8-841d-263a74613c64",
+                      "user_id": "dc25e16e-451c-40ce-8464-4508e318e7ac",
+                      "date": "2021-02-25T16:00:00.000Z",
+                      "created_at": "2021-02-24T23:36:50.552Z",
+                      "updated_at": "2021-02-24T23:36:50.552Z",
+                      "user": {
+                        "id": "dc25e16e-451c-40ce-8464-4508e318e7ac",
+                        "name": "Alvaro Israel 2",
+                        "email": "team4@gobarberapp.net",
+                        "avatar": "f5631562cfaa03a9cdb9-8402007.png",
+                        "created_at": "2021-02-24T02:03:16.094Z",
+                        "updated_at": "2021-02-24T03:01:12.273Z",
+                        "avatar_url": "https://gobarberapp.net.s3.amazonaws.com/f5631562cfaa03a9cdb9-8402007.png",
+                      }
+                    }, ]
+                Without data return:
+                  value: [ ]
+        '401':
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+
+  /appointments:
+    post:
+      tags:
+        - Appointments
+      summary: Return info from newly created appointment.
+      description: 'Return a json object for a newly created appointment.'
+      requestBody:
+        description: New Appointment
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointments'
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '400':
+          description: When validation error occurs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: When business logic violation occurs.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/AppointmentAlreadyBookedError'
+                  - $ref: '#/components/schemas/AppointmentPastDateError'
+                  - $ref: '#/components/schemas/AppointmentWithYourselfError'
+                  - $ref: '#/components/schemas/AppointmentOutOfBoundariesError'
+              examples:
+                AppointmentAlreadyBookedError:
+                  value:
+                    status: 'error'
+                    message: 'This appointment is already booked.'
+                AppointmentPastDateError:
+                  value:
+                    status: 'error'
+                    message: 'You cant create an appointment on a past date.'
+                AppointmentWithYourselfError:
+                  value:
+                    status: 'error'
+                    message: 'You cant create an appointment with yourself.'
+                AppointmentOutOfBoundariesError:
+                  value:
+                    status: 'error'
+                    message: 'You can only create appointments between 8am and 5pm.'
+        '401':
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  provider_id:
+                    type: string
+                  user_id:
+                    type: string
+                  date:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                example: {
+                  id: 'a0a1ff30-b0a6-452a-a3d8-3f7f82d37105',
+                  provider_id: '4129c527-67c1-4fc4-a091-526011d74a48',
+                  user_id: 'e35b89dd-5a2b-4c95-a8e1-e7276636a259',
+                  date: '2021-03-09T10:00:00.000Z',
+                  created_at: '2021-03-09T00:43:30.125Z',
+                  updated_at: '2021-03-09T00:43:30.125Z',
+                }
+
   /users:
     post:
       tags:
         - Users
       summary: Return info from newly created user.
-      description: "Return a json object info from newly created user."
-      parameters:
-        - in: body
-          name: body
-          description: New User
-          required: true
-          schema:
-            $ref: '#/definitions/Users'
+      description: 'Return a json object info from newly created user.'
+      requestBody:
+        description: New User
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
       responses:
         '500':
           description: When something goes boing in the server.
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
         '400':
           description: When validation error occurs.
-          schema:
-            $ref: '#/definitions/ValidationError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
         '404':
           description: When email is already used.
-          schema:
-            $ref: '#/definitions/MailAreadyUsedError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailAreadyUsedError'
         '200':
           description: When all parameters are ok.
-          schema:
-            type: object
-            properties:
-              name:
-                type: string
-              email:
-                type: string
-              id:
-                type: string
-              created_at:
-                type: string
-              updated_at:
-                type: string
-              avatar_url:
-                type: [ 'null', string ]
-                example: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png'
-            example: {
-              name: 'Go Barber Team',
-              email: 'team@gobarberapp.net',
-              id: 'dc25e16e-451c-40ce-8464-4508e318e7ac',
-              created_at: '2021-02-24T02:03:16.094Z',
-              updated_at: '2021-02-24T02:03:16.094Z',
-              avatar_url: null,
-            }
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  id:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  avatar_url:
+                    type: string
+                    nullable: true
+                    example: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png'
+                example: {
+                  name: 'Go Barber Team',
+                  email: 'team@gobarberapp.net',
+                  id: 'dc25e16e-451c-40ce-8464-4508e318e7ac',
+                  created_at: '2021-02-24T02:03:16.094Z',
+                  updated_at: '2021-02-24T02:03:16.094Z',
+                  avatar_url: null,
+                }
+
   /users/avatar:
     patch:
       tags:
         - Users
       summary: Updates user avatar.
-      description: "Updates a user avatar with an image url."
-      consumes:
-        - multipart/form-data
-      parameters:
-        - in: formData
-          name: avatar
-          description: Select an image to upload.
-          required: true
-          type: file
+      description: 'Updates a user avatar with an image url.'
+      requestBody:
+        description: Select an image to upload.
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                  format: binary
       responses:
         '500':
           description: When something goes boing in the server.
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
         '401':
-          description: When not authenticated (missing SWT token).
-          schema:
-            $ref: '#/definitions/UnauthorizedError'
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         '200':
           description: When avatar user is successfully updated.
-          schema:
-            type: object
-            properties:
-              user:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      avatar:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      avatar_url:
+                        type: string
+                  token:
                     type: string
-                  name:
-                    type: string
-                  email:
-                    type: string
-                  avatar:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  avatar_url:
-                    type: string
-              token:
-                type: string
-            example:
-              user: {
-                id: '16463316-155d-43b8-841d-263a74613c64',
-                name: 'Go Barber',
-                email: 'test@gobarberapp.net',
-                avatar: '4dfcbdea62cdcbc5ba8d-8402007.png',
-                created_at: '2021-02-17T19:20:48.506Z',
-                updated_at: '2021-02-20T23:27:28.342Z',
-                avatar_url: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png',
-              }
+                example:
+                  user: {
+                    id: '16463316-155d-43b8-841d-263a74613c64',
+                    name: 'Go Barber',
+                    email: 'test@gobarberapp.net',
+                    avatar: '4dfcbdea62cdcbc5ba8d-8402007.png',
+                    created_at: '2021-02-17T19:20:48.506Z',
+                    updated_at: '2021-02-20T23:27:28.342Z',
+                    avatar_url: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png',
+                  }
       security: [ { JWT: [ ] } ]
+
   /sessions:
     post:
       tags:
         - Sessions
       summary: Return a JWT token for an authenticated user.
-      description: "Return a json object containing user info and JWT token after user authenticated itself in the app."
-      parameters:
-        - in: body
-          name: body
-          description: New Session
-          required: true
-          schema:
-            $ref: '#/definitions/Sessions'
+      description: 'Return a json object containing user info and JWT token after user authenticated itself in the app.'
+      requestBody:
+        description: New Session
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sessions'
       responses:
         '500':
           description: When something goes boing in the server.
-          schema:
-            $ref: '#/definitions/InternalServerError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
         '400':
           description: When validation error occurs.
-          schema:
-            $ref: '#/definitions/ValidationError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
         '200':
           description: When all parameters are ok.
-          schema:
-            type: object
-            properties:
-              user:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      avatar:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      avatar_url:
+                        type: string
+                  token:
                     type: string
-                  name:
-                    type: string
-                  email:
-                    type: string
-                  avatar:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  avatar_url:
-                    type: string
-              token:
-                type: string
-            example:
-              user: {
-                id: '16463316-155d-43b8-841d-263a74613c64',
-                name: 'Go Barber',
-                email: 'test@gobarberapp.net',
-                avatar: '4dfcbdea62cdcbc5ba8d-8402007.png',
-                created_at: '2021-02-17T19:20:48.506Z',
-                updated_at: '2021-02-20T23:27:28.342Z',
-                avatar_url: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png',
-              }
-              name: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5MjQ0NzIsImV4cCI6MTYxNDAxMDg3Miwic3ViIjoiMTY0NjMzMTYtMTU1ZC00M2I4LTg0MWQtMjYzYTc0NjEzYzY0In0.kjKz3eBXMJcUpchM2wSXTTSVrAbLRO_tAF2166-vh4o'
+                example:
+                  user: {
+                    id: '16463316-155d-43b8-841d-263a74613c64',
+                    name: 'Go Barber',
+                    email: 'test@gobarberapp.net',
+                    avatar: '4dfcbdea62cdcbc5ba8d-8402007.png',
+                    created_at: '2021-02-17T19:20:48.506Z',
+                    updated_at: '2021-02-20T23:27:28.342Z',
+                    avatar_url: 'https://gobarberapp.net/4dfcbdea62cdcbc5ba8d-8402007.png',
+                  }
+                  name: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5MjQ0NzIsImV4cCI6MTYxNDAxMDg3Miwic3ViIjoiMTY0NjMzMTYtMTU1ZC00M2I4LTg0MWQtMjYzYTc0NjEzYzY0In0.kjKz3eBXMJcUpchM2wSXTTSVrAbLRO_tAF2166-vh4o'
       security: [ ]

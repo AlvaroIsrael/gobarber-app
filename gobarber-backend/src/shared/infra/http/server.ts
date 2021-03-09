@@ -7,7 +7,7 @@ import { errors } from 'celebrate';
 import 'express-async-errors';
 import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
 import AppError from '@shared/errors/AppError';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import routes from './routes';
 
 import '@shared/infra/typeorm';
@@ -29,7 +29,7 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
     });
   }
 
-  return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+  return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'error',
     message: err.message //'Internal server error.',
   });

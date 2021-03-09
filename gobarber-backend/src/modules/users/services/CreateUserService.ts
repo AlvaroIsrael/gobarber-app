@@ -1,6 +1,6 @@
 import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
@@ -29,7 +29,7 @@ class CreateUserService {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
-      throw new AppError('Email already used.', HttpStatus.NOT_FOUND);
+      throw new AppError('Email already used.', StatusCodes.NOT_FOUND);
     }
 
     const hashedPasswod = await this.hashProvider.generateHash(password);
