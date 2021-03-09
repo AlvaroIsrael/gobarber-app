@@ -1,6 +1,6 @@
 import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
@@ -24,7 +24,7 @@ class UpdateUserAvatarService {
     const user = await this.usersRepository.findById(userId);
 
     if (!user) {
-      throw new AppError('You must be authenticated to change the avatar.', HttpStatus.UNAUTHORIZED);
+      throw new AppError('You must be authenticated to change the avatar.', StatusCodes.UNAUTHORIZED);
     }
 
     if (user.avatar) {

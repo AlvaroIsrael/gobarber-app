@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
 import { classToClass } from 'class-transformer';
 
@@ -15,7 +15,7 @@ class SessionsController {
       password,
     });
 
-    return response.status(HttpStatus.OK).json({ user: classToClass(user), token });
+    return response.status(StatusCodes.OK).json({ user: classToClass(user), token });
   }
 }
 

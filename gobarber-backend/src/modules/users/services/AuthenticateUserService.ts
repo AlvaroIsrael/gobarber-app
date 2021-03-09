@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
@@ -33,13 +33,13 @@ class AuthenticateUserService {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('Incorrect email/password combination.', HttpStatus.UNAUTHORIZED);
+      throw new AppError('Incorrect email/password combination.', StatusCodes.UNAUTHORIZED);
     }
 
     const passwordMatched = await this.hashProvider.compareHash(password, user.password);
 
     if (!passwordMatched) {
-      throw new AppError('Incorrect email/password combination.', HttpStatus.UNAUTHORIZED);
+      throw new AppError('Incorrect email/password combination.', StatusCodes.UNAUTHORIZED);
     }
 
     const { secret, expiresIn } = authConfig.jwt;

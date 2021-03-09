@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 
 import ResetPasswordService from '@modules/users/services/ResetPasswordService';
 
@@ -15,7 +15,7 @@ class ResetPasswordController {
       password,
     });
 
-    return response.status(HttpStatus.NO_CONTENT).json();
+    return response.status(StatusCodes.NO_CONTENT).json();
   }
 }
 

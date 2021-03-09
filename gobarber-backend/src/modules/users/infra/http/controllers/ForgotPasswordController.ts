@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 
 import SendForgotPasswordEmailService from '@modules/users/services/SendForgotPasswordEmailService';
 
@@ -16,7 +16,7 @@ class ForgotPasswordController {
       email,
     });
 
-    return response.status(HttpStatus.NO_CONTENT).json();
+    return response.status(StatusCodes.NO_CONTENT).json();
   }
 }
 

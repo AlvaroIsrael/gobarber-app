@@ -1,7 +1,7 @@
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 import { getHours, isBefore, startOfHour, format } from 'date-fns';
 import AppError from '@shared/errors/AppError';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import { inject, injectable } from 'tsyringe';
@@ -29,25 +29,24 @@ class CreateAppointmentService {
     const appointmentDate = startOfHour(date);
 
     if (isBefore(appointmentDate, Date.now())) {
-      throw new AppError('You can\'t create an appointment on a past date.');
+      throw new AppError('You can\'t create an appointment on a past date.', StatusCodes.NOT_FOUND);
     }
 
     if (userId === providerId) {
-      throw new AppError('You can\'t create an appointment with yourself.');
+      throw new AppError('You can\'t create an appointment with yourself.', StatusCodes.NOT_FOUND);
     }
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
-      throw new AppError('You can only create appointments between 8am and 5pm.',
-      );
+      throw new AppError('', StatusCodes.NOT_FOUND);
     }
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
-      providerId
+      providerId,
     );
 
     if (findAppointmentInSameDate) {
-      throw new AppError('This appointment is already booked', HttpStatus.BAD_REQUEST);
+      throw new AppError('This appointment is already booked', StatusCodes.NOT_FOUND);
     }
 
     const appointment = await this.appointmentsRepository.create({

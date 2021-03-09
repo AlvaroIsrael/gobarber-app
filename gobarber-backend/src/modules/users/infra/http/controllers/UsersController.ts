@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import * as HttpStatus from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import { classToClass } from 'class-transformer';
 
@@ -14,7 +14,7 @@ class UsersController {
       name, email, password,
     });
 
-    return response.status(HttpStatus.OK).json(classToClass(user));
+    return response.status(StatusCodes.OK).json(classToClass(user));
   }
 }
 
