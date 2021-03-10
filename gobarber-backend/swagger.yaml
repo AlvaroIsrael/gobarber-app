@@ -183,11 +183,193 @@ components:
         }
 
 paths:
+  /providers/{provider_id}/month-availability:
+    get:
+      tags:
+        - Providers
+      summary: Return an array of days in a month clear for a new appointment.
+      description: 'Return an array of days in a month clear for a new appointment.'
+      parameters:
+        - in: path
+          name: provider_id
+          description: An uuid of a provider.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: month
+          schema:
+            type: integer
+          description: A month's number.
+        - in: query
+          name: year
+          schema:
+            type: integer
+          description: A year's number.
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  day:
+                    type: integer
+                  available:
+                    type: boolean
+              examples:
+                With data return:
+                  value: [ {
+                    day: 1,
+                    available: true,
+                  }, {
+                    day: 2,
+                    available: false,
+                  }, ]
+                Without data return:
+                  value: [ ]
+        '401':
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+      security: [ { JWT: [ ] } ]
+
+  /providers/{provider_id}/day-availability:
+    get:
+      tags:
+        - Providers
+      summary: Return an array of hours clear for a new appointment at a specific day.
+      description: 'Return an array of hours clear for a new appointment at a specific day.'
+      parameters:
+        - in: path
+          name: provider_id
+          description: An uuid of a provider.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: day
+          schema:
+            type: integer
+          description: A day of the month.
+        - in: query
+          name: month
+          schema:
+            type: integer
+          description: A month's number.
+        - in: query
+          name: year
+          schema:
+            type: integer
+          description: A year's number.
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hour:
+                    type: integer
+                  available:
+                    type: boolean
+              examples:
+                With data return:
+                  value: [ {
+                    hour: 8,
+                    available: true,
+                  }, {
+                    hour: 9,
+                    available: false,
+                  }, ]
+                Without data return:
+                  value: [ ]
+        '401':
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+      security: [ { JWT: [ ] } ]
+
+  /providers:
+    get:
+      tags:
+        - Providers
+      summary: Return a list of providers registered at the app.
+      description: 'Return an array of all providers.'
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  avatar:
+                    type: string
+                    nullable: true
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  avatar_url:
+                    type: string
+                    nullable: true
+              examples:
+                With data return:
+                  value: [ {
+                    id: '4129c527-67c1-4fc4-a091-526011d74a48',
+                    name: 'Team Go Barber',
+                    email: 'team4@gobarberapp.net',
+                    avatar: null,
+                    created_at: '2021-03-07T21:31:27.465Z',
+                    updated_at: '2021-03-07T21:31:27.465Z',
+                    avatar_url: null,
+                  }, ]
+                Without data return:
+                  value: [ ]
+        '401':
+          description: When not authenticated (missing JWT token).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+      security: [ { JWT: [ ] } ]
+
   /appointments/me:
     get:
       tags:
         - Appointments
-      summary: Return info from newly created appointment.
+      summary: Return an array of all appointments.
       description: 'Return an array of all appointments.'
       responses:
         '500':
@@ -260,6 +442,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
+      security: [ { JWT: [ ] } ]
 
   /appointments:
     post:
@@ -347,6 +530,7 @@ paths:
                   created_at: '2021-03-09T00:43:30.125Z',
                   updated_at: '2021-03-09T00:43:30.125Z',
                 }
+      security: [ { JWT: [ ] } ]
 
   /users:
     post:
@@ -409,6 +593,7 @@ paths:
                   updated_at: '2021-02-24T02:03:16.094Z',
                   avatar_url: null,
                 }
+      security: [ ]
 
   /users/avatar:
     patch:
