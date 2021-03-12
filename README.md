@@ -1,4 +1,4 @@
-<div style="background: #363636">
+<div style="background-color: #363636">
   <h1 align="center">
     <a href="https://gobarberapp.net">
       <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
