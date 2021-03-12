@@ -1,9 +1,11 @@
-<h1 align="center">
-  <a href="https://gobarberapp.net">
-    <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
-  </a>
-  <br>
-</h1>
+<div style="background: #363636">
+  <h1 align="center">
+    <a href="https://gobarberapp.net">
+      <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
+    </a>
+    <br>
+  </h1>
+</div>
 
 [![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
 
