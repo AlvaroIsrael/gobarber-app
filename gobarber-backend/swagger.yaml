@@ -150,6 +150,24 @@ components:
       example:
         status: 'error'
         message: 'You can only create appointments between 8am and 5pm.'
+    ResetPasswordTokenDoesNotExistError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'User token does not exist'
+    ResetPasswordTokenExpiredError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Token has expired'
     ValidationError:
       properties:
         statusCode:
@@ -183,6 +201,126 @@ components:
         }
 
 paths:
+  /docs:
+    get:
+      tags:
+        - Docs
+      summary: Exhibits a web page with all api documented by swagger.
+      description: 'Exhibits a web page with all api documented by swagger.'
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: When all parameters are ok.
+          content:
+            text/html:
+              example:
+                text/html:
+                  value: '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Swagger UI</title><link rel="stylesheet" type="text/css" href="./swagger-ui.css" ><link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" /><link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" /></head><body><div id="swagger-ui"></div><script src="./swagger-ui-bundle.js"></script><script src="./swagger-ui-standalone-preset.js"></script><script src="./swagger-ui-init.js"></script></body></html>'
+      security: [ ]
+
+  /password/reset:
+    post:
+      tags:
+        - Password
+      summary: Resets a password.
+      description: 'Resets a password.'
+      requestBody:
+        description: New Password
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                passwordConfirmation:
+                  type: string
+                token:
+                  type: string
+            example: {
+              password: '12312345',
+              passwordConfirmation: '12312345',
+              token: 'd1d1bfbc-f150-4e2f-89bc-979cfdeac181',
+            }
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResetPasswordTokenDoesNotExistError'
+        '400':
+          description: When validation error occurs.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ResetPasswordTokenDoesNotExistError'
+                  - $ref: '#/components/schemas/ResetPasswordTokenExpiredError'
+              examples:
+                ResetPasswordTokenDoesNotExistError:
+                  value:
+                    status: 'error'
+                    message: 'User token does not exist'
+                ResetPasswordTokenExpiredError:
+                  value:
+                    status: 'error'
+                    message: 'Token has expired'
+        '200':
+          description: When all parameters are ok.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  day:
+                    type: integer
+                  available:
+                    type: boolean
+              example: {
+                password: '12312345',
+                passwordConfirmation: '12312345',
+                token: 'd1d1bfbc-f150-4e2f-89bc-979cfdeac181',
+              }
+        '204':
+          description: When a email is successfully send.
+      security: [ ]
+
+  /password/forgot:
+    post:
+      tags:
+        - Password
+      summary: Sends a email with a password recovery link.
+      description: 'Sends a email with a password recovery link.'
+      requestBody:
+        description: New Appointment
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+            example:
+              email: 'team@gobarberapp.net'
+      responses:
+        '500':
+          description: When something goes boing in the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '204':
+          description: When a email is successfully send.
+      security: [ ]
+
   /providers/{provider_id}/month-availability:
     get:
       tags:
