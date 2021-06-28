@@ -13,10 +13,12 @@
 <p align="center">
   <a href="#-technologies-used">Technologies Used</a> •
   <a href="#-how-to-use">How To Use</a> •
+  <a href="#-contributing">Contributing</a> •
   <a href="#-license">License</a>
 </p>
 
 <p align="center">Made with ❤️ by Alvaro Israel 👏🏻 <a href="https://www.linkedin.com/in/alvaroisraeldesenvolvedor/">Get in Touch!</a></p>
+<p align="center">Hit the ⭐️ button if you like this project!</p>
 
 ![Go Barber App](https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarber-tutorial.gif)
 
@@ -54,12 +56,15 @@ $ yarn start
 ```
 
 ### <b>Backend</b>
+See [How to Run](https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/README.md#-how-to-run) inside gobarber-backend project folder for more details.
 ```bash
 # Go into backend folder
 $ cd gobarber-backend
 
 # Install dependencies
 $ yarn install
+
+# Install the 3 databases needed to run this program. See 'How to Run' above for more details.
 
 # Run the app
 $ yarn dev:server
@@ -76,6 +81,14 @@ $ yarn install
 # Run the app
 $ yarn start
 ```
+
+## 🤝 Contributing
+
+- Fork it (https://github.com/AlvaroIsrael/gobarber-app/fork)
+- Create your feature branch (`git checkout -b feature/myAewsomeFeature`)
+- Commit your changes (`git commit -am 'Add some new myAewsomeFeature'`)
+- Push to the branch (`git push origin feature/myAewsomeFeature`)
+- Create a new Pull Request
 
 ## 🧾 License
 
