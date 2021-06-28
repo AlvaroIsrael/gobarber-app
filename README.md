@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://gobarberapp.net">
-    <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberlogo.svg"/>
+    <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberdarklogo.svg"/>
   </a>
   <br>
 </h1>
