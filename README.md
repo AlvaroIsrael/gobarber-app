@@ -33,7 +33,9 @@
 
 ## 💻 How to Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com)
+and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
+From your command line:
 
 ```bash
 # Clone this repository
@@ -44,6 +46,7 @@ $ cd gobarber-app
 ```
 
 ### <b>Frontend</b>
+
 ```bash
 # Go into frontend folder
 $ cd gobarber-frontend
@@ -56,7 +59,10 @@ $ yarn start
 ```
 
 ### <b>Backend</b>
-See [How to Run](https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/README.md#-how-to-run) inside gobarber-backend project folder for more details.
+
+See [How to Run](https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/README.md#-how-to-run) inside
+gobarber-backend project folder for more details.
+
 ```bash
 # Go into backend folder
 $ cd gobarber-backend
@@ -71,6 +77,7 @@ $ yarn dev:server
 ```
 
 ### <b>Mobile</b>
+
 ```bash
 # Go into mobile folder
 $ cd gobarber-mobile
