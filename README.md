@@ -91,10 +91,22 @@ $ yarn start
 
 ## 🤝 Contributing
 
-- Fork it (https://github.com/AlvaroIsrael/gobarber-app/fork)
-- Create your feature branch (`git checkout -b feature/myAewsomeFeature`)
-- Commit your changes (`git commit -am 'Add some new myAewsomeFeature'`)
-- Push to the branch (`git push origin feature/myAewsomeFeature`)
+- Fork this repository:
+  ```bash
+  https://github.com/AlvaroIsrael/gobarber-app/fork
+  ```
+- Create your feature branch:
+  ```bash
+  git checkout -b feature/myAewsomeFeature
+  ```
+- Commit your changes:
+  ```bash
+  git commit -m 'Add some new myAewsomeFeature'
+  ```
+- Push to the branch:
+  ```bash
+  git push origin feature/myAewsomeFeature
+  ```
 - Create a new Pull Request
 
 ## 🧾 License
