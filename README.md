@@ -72,6 +72,9 @@ $ yarn install
 
 # Install the 3 databases needed to run this program. See 'How to Run' above for more details.
 
+# Run the migrations
+$ yarn typeorm migration:run
+
 # Run the app
 $ yarn dev:server
 ```
@@ -91,23 +94,31 @@ $ yarn start
 
 ## 🤝 Contributing
 
-- Fork this repository:
-  ```bash
-  https://github.com/AlvaroIsrael/gobarber-app/fork
-  ```
-- Create your feature branch:
-  ```bash
-  git checkout -b feature/myAewsomeFeature
-  ```
-- Commit your changes:
-  ```bash
-  git commit -m 'Add some new myAewsomeFeature'
-  ```
-- Push to the branch:
-  ```bash
-  git push origin feature/myAewsomeFeature
-  ```
-- Create a new Pull Request
+Fork this repository:
+
+```bash
+https://github.com/AlvaroIsrael/gobarber-app/fork
+```
+
+Create your feature branch:
+
+```bash
+git checkout -b feature/myAewsomeFeature
+```
+
+Commit your changes:
+
+```bash
+git commit -m 'Add some new myAewsomeFeature'
+```
+
+Push to the branch:
+
+```bash
+git push origin feature/myAewsomeFeature
+```
+
+Create a new Pull Request
 
 ## 🧾 License
 
