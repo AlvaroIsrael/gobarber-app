@@ -166,6 +166,14 @@ PORT=3333
 STORAGE_DRIVER=disk
 ```
 
+After you have all databases up and running, you will need to run the migrations to create the tables in those
+databases. This can be done by running the following command:
+
+```bash
+# Run the migrations
+$ yarn typeorm migration:run
+```
+
 ## 🎯 How to Test
 
 ```bash
