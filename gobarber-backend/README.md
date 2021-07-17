@@ -189,11 +189,26 @@ Code coverage html report can be found at:
 
 ## 🤝 Contributing
 
-- Fork it (https://github.com/AlvaroIsrael/gobarber-app/fork)
-- Create your feature branch (`git checkout -b feature/myAewsomeFeature`)
-- Commit your changes (`git commit -am 'Add some new myAewsomeFeature'`)
-- Push to the branch (`git push origin feature/myAewsomeFeature`)
-- Create a new Pull Request
+Fork this repository: https://github.com/AlvaroIsrael/gobarber-app/fork
+
+```bash
+# Create your feature branch:
+$ git checkout -b feature/myAewsomeFeature
+
+# Commit your changes:
+$ git commit -m 'feat: Added some new aewsomeFeature'
+
+# Push to the branch:
+$ git push origin feature/myAewsomeFeature
+
+# Create a new pull request
+```
+
+- Read more about commits in [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
+- Read more about how to open a Pull Request from
+  [GitHub official documentation](
+  https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+  ).
 
 ## 🏆 Technologies Used
 
