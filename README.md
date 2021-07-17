@@ -94,31 +94,26 @@ $ yarn start
 
 ## 🤝 Contributing
 
-Fork this repository:
+Fork this repository: https://github.com/AlvaroIsrael/gobarber-app/fork
 
 ```bash
-https://github.com/AlvaroIsrael/gobarber-app/fork
+# Create your feature branch:
+$ git checkout -b feature/myAewsomeFeature
+
+# Commit your changes:
+$ git commit -m 'feat: Added some new aewsomeFeature'
+
+# Push to the branch:
+$ git push origin feature/myAewsomeFeature
+
+# Create a new pull request
 ```
 
-Create your feature branch:
-
-```bash
-git checkout -b feature/myAewsomeFeature
-```
-
-Commit your changes:
-
-```bash
-git commit -m 'Add some new myAewsomeFeature'
-```
-
-Push to the branch:
-
-```bash
-git push origin feature/myAewsomeFeature
-```
-
-Create a new Pull Request
+- Read more about commits in [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
+- Read more about how to open a Pull Request from
+  [GitHub official documentation](
+  https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+  ).
 
 ## 🧾 License
 
