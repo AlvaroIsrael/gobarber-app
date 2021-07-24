@@ -37,9 +37,33 @@ export const BackButton = styled.TouchableOpacity`
   margin-top: 25px;
 `;
 
-export const Avatar = styled.Image`
+export const UserAvatar = styled.Image`
   width: 186px;
   height: 186px;
   border-radius: 98px;
+  border-width: 2px;
+  border-color: #808080;
+  padding: 3px;
   align-self: center;
+`;
+
+export const UserAvatarButton = styled.TouchableOpacity`
+  margin-top: ${Platform.OS === 'ios' ? 32 : 320}px;
+  width: 186px;
+  height: 186px;
+  border-radius: 98px;
+  background: #393939;
+  border: 3px #808080;
+  padding: 3px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+`;
+
+export const UserInitialsContainer = styled.View``;
+
+export const UserInitials = styled.Text`
+  font-size: 56px;
+  color: #808080;
+  font-family: ${'Montserrat-Medium'};
 `;
