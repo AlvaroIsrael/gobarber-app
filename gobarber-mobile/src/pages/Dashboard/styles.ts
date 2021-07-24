@@ -34,6 +34,8 @@ export const UserAvatar = styled.Image`
   width: 56px;
   height: 56px;
   border-radius: 28px;
+  border-width: 2px;
+  border-color: #808080;
 `;
 
 export const ProvidersList = styled(FlatList as new () => FlatList<Provider>).attrs({
@@ -64,6 +66,8 @@ export const ProviderAvatar = styled.Image`
   width: 72px;
   height: 72px;
   border-radius: 36px;
+  border-width: 2px;
+  border-color: #808080;
 `;
 
 export const ProviderInfo = styled.View`
