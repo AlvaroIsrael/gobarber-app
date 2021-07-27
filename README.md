@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://gobarberapp.net">
-    <img  alt="GoBarberApp"  src="/gobarber-frontend/src/assets/gobarberdarklogo.svg"/>
+    <img  alt="GoBarberApp"  src="/gobarber-frontend/src/assets/gobarberdarklogo.png"/>
   </a>
   <br>
 </h1>
@@ -131,6 +131,6 @@ Resources:
 [conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [GitHub official documentation]: https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
-## 🧾 License
+## 📝 License
 
-This software is under MIT license. See [LICENSE](/LICENSE.md) for more details.
+This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
