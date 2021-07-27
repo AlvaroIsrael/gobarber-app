@@ -1,51 +1,64 @@
 <h1 align="center">
   <a href="https://gobarberapp.net">
-    <img  alt="GoBarberApp"  src="https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarberdarklogo.svg"/>
+    <img  alt="GoBarberApp"  src="/gobarber-frontend/src/assets/gobarberdarklogo.svg"/>
   </a>
   <br>
 </h1>
 
+<div align="center">
+  
 [![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
 
-<h4 align="center">A concept (yet fully functional) barber shop app!</h4>
-<h5 align="center">It was build as part of a programming course taught by Rocketseat.</h5>
+> A concept (yet fully-functional) barber shop app!
+  
+It was build as part of a programming course taught by Rocketseat.
 
-<p align="center">
+<p>
   <a href="#-technologies-used">Technologies Used</a> •
   <a href="#-how-to-use">How To Use</a> •
   <a href="#-contributing">Contributing</a> •
   <a href="#-license">License</a>
 </p>
+  
+<br/>
 
-<p align="center">Made with ❤️ by Alvaro Israel 👏🏻 <a href="https://www.linkedin.com/in/alvaroisraeldesenvolvedor/">Get in Touch!</a></p>
-<p align="center">Hit the ⭐️ button if you like this project!</p>
+<p>Made with ❤️ by Alvaro Israel 👏🏻 <a href="https://www.linkedin.com/in/alvaroisraeldesenvolvedor/">Get in Touch!</a></p>
+<p>Hit the ⭐️ button if you like this project!</p>
 
-![Go Barber App](https://raw.githubusercontent.com/AlvaroIsrael/gobarber-app/master/gobarber-frontend/src/assets/gobarber-tutorial.gif)
+</div>
+
+<br/>
+
+## Preview
+
+![Go Barber App](/gobarber-frontend/src/assets/gobarber-tutorial.gif)
 
 ## 🏆 Technologies Used
 
-- [Node](https://nodejs.org/en/)
+- [Node.js](https://nodejs.org/en/) and [NPM](http://npmjs.com)
 - [React](https://github.com/facebook/react/)
 - [ReactNative](https://github.com/facebook/react-native/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [ExpressJs](https://expressjs.com/)
-- [JestJs](https://jestjs.io/)
+- [Express](https://expressjs.com/)
+- [Jest](https://jestjs.io/)
 
 ## 💻 How to Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com)
-and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
-From your command line:
+### **Install system dependencies**
+
+- Install [Git](https://git-scm.com).
+- Install [Node.js](https://nodejs.org/en/download/).
+
+### **Clone**
+
+In your command line:
 
 ```bash
-# Clone this repository
 $ git clone https://github.com/AlvaroIsrael/gobarber-app.git
-
-# Go into the main app folder
 $ cd gobarber-app
 ```
 
-### <b>Frontend</b>
+### **Frontend**
 
 ```bash
 # Go into frontend folder
@@ -58,10 +71,9 @@ $ yarn install
 $ yarn start
 ```
 
-### <b>Backend</b>
+### **Backend**
 
-See [How to Run](https://github.com/AlvaroIsrael/gobarber-app/blob/master/gobarber-backend/README.md#-how-to-run) inside
-gobarber-backend project folder for more details.
+See [How to Run](/gobarber-backend/README.md#-how-to-run) inside the `gobarber-backend` project folder for more details.
 
 ```bash
 # Go into backend folder
@@ -79,7 +91,7 @@ $ yarn typeorm migration:run
 $ yarn dev:server
 ```
 
-### <b>Mobile</b>
+### **Mobile**
 
 ```bash
 # Go into mobile folder
@@ -94,27 +106,31 @@ $ yarn start
 
 ## 🤝 Contributing
 
-Fork this repository: https://github.com/AlvaroIsrael/gobarber-app/fork
+Fork this repository - click [fork][].
 
 ```bash
 # Create your feature branch:
-$ git checkout -b feature/myAewsomeFeature
+$ git checkout -b feature/myAwesomeFeature
 
 # Commit your changes:
-$ git commit -m 'feat: Added some new aewsomeFeature'
+$ git commit -m 'feat: Added some new awesomeFeature'
 
 # Push to the branch:
-$ git push origin feature/myAewsomeFeature
-
-# Create a new pull request
+$ git push -u origin feature/myAwesomeFeature
 ```
 
-- Read more about commits in [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
-- Read more about how to open a Pull Request from
-  [GitHub official documentation](
-  https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
-  ).
+Then go to [Pull Requests][] and make a new one.
+
+Resources:
+
+- Read more about commits in [conventional commits][].
+- Read more about how to open a Pull Request from [GitHub official documentation][].
+  
+[fork]: https://github.com/AlvaroIsrael/gobarber-app/fork
+[Pull Requests]: https://github.com/AlvaroIsrael/gobarber-app/pulls
+[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[GitHub official documentation]: https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
 ## 🧾 License
 
-This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
+This software is under MIT license. See [LICENSE](/LICENSE.md) for more details.
