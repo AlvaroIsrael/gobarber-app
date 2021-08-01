@@ -80,7 +80,7 @@ const Dashboard: FC = () => {
   }, [currentMonth, monthAvailability]);
 
   const selectedDateAsText = useMemo(() => {
-    return format(selectedDate, "'Dia' dd 'de' MMMM", {
+    return format(selectedDate, '\'Dia\' dd \'de\' MMMM', {
       locale: ptBR,
     });
   }, [selectedDate]);

@@ -23,11 +23,11 @@ describe('Input component', () => {
     expect(getByPlaceholderText('E-mail')).toBeTruthy();
   });
 
-  it('should render highlight on input focus', async () => {
+  it('should render border highlight when input is focused', async () => {
     const { getByPlaceholderText, getByTestId } = render(<Input name="email" placeholder="E-mail" />);
 
     const inputElement = getByPlaceholderText('E-mail');
-    const containerElement = getByTestId('input-container');
+    const containerElement = getByTestId('input-container-email');
 
     fireEvent.focus(inputElement);
 
@@ -48,7 +48,7 @@ describe('Input component', () => {
     const { getByPlaceholderText, getByTestId } = render(<Input name="email" placeholder="E-mail" />);
 
     const inputElement = getByPlaceholderText('E-mail');
-    const containerElement = getByTestId('input-container');
+    const containerElement = getByTestId('input-container-email');
 
     fireEvent.change(inputElement, {
       target: { value: 'johndoe@example.com.br' },
