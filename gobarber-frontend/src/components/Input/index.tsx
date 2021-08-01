@@ -40,7 +40,7 @@ const Input: React.FC<InputProps> = ({ name, containerStyle = {}, icon: Icon, ..
       hasError={!!error}
       isFocused={isFocused}
       isFilled={isFilled}
-      data-testid="input-container"
+      data-testid={`input-container-${fieldName}`}
     >
       {Icon && <Icon size={20} />}
       <input onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
