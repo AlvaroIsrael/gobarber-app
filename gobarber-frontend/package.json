@@ -32,6 +32,14 @@
     "test:coverage": "react-scripts test --coverage --watchAll false",
     "eject": "react-scripts eject"
   },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "printWidth": 120,
+    "semi": true
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/pages/**/*.tsx",
