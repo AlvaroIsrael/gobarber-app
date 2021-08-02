@@ -28,8 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage --watchAll false",
+    "test": "clear; react-scripts test --watchAll=false",
+    "test:coverage": "clear; react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "prettier": {
