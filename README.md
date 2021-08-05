@@ -10,8 +10,6 @@
 [![CodeQLCI](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AlvaroIsrael/gobarber-app/actions/workflows/codeql-analysis.yml)
 
 > A concept (yet fully-functional) barber shop app!
-  
-It was build as part of a programming course taught by Rocketseat.
 
 <p>
   <a href="#-technologies-used">Technologies Used</a> •
