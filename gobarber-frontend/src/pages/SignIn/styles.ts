@@ -14,6 +14,10 @@ export const Content = styled.div`
   place-content: center;
   width: 100%;
   max-width: 700px;
+
+  @media screen and (max-width: 1366px) {
+    max-width: none;
+  }
 `;
 
 const appearFromLeft = keyframes`
@@ -101,4 +105,39 @@ export const Background = styled.div`
       width: 100%;
     }
   }
+
+  @media screen and (max-width: 1366px) {
+    display: none !important;
+  }
+`;
+
+export const Copyright = styled.div`
+  animation: ${appearFromLeft} 1s;
+
+  a {
+    color: #ffffff;
+
+    :link {
+      text-decoration: none;
+    }
+
+    :visited {
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    :hover {
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    :active {
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  }
+
+  margin-bottom: 50px;
+  position: absolute;
+  bottom: 0;
 `;

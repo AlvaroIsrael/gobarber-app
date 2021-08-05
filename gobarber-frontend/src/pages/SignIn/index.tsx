@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Container, Content, AnimationContainer, Background } from './styles';
+import { Container, Content, AnimationContainer, Background, Copyright } from './styles';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -83,6 +83,13 @@ const SignIn: React.FC = () => {
             Criar conta
           </Link>
         </AnimationContainer>
+        <Copyright>
+          ❤️&nbsp;
+          <a href="https://github.com/AlvaroIsrael/gobarber-app">
+            <strong>Álvaro Israel Nunes Leite</strong>
+          </a>
+          &nbsp;&copy; 2021
+        </Copyright>
       </Content>
       <Background>
         <LazyLoadImage alt="Go Barber Background" src={signInBackground} effect="blur" />
