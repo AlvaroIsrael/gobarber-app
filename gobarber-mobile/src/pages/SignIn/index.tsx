@@ -1,12 +1,11 @@
 import React, { useCallback, useRef } from 'react';
 import { Image, View, KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native';
-import logger from 'debug';
 import Icon from 'react-native-vector-icons/Feather';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
-import logoImage from '../../assets/logo.png';
+import logoImage from '../../assets/logo-mobile.png';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
@@ -30,7 +29,7 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
-  const { signIn, signOut } = useAuth();
+  const { signIn } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
@@ -105,10 +104,7 @@ const SignIn: React.FC = () => {
                 </Button>
               </View>
             </Form>
-            <ForgotPassword
-              onPress={() => {
-                logger.log('ForgotPassword');
-              }}>
+            <ForgotPassword onPress={() => navigation.navigate('ForgotPassword')}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>

@@ -6,7 +6,7 @@ import { FormHandles } from '@unform/core';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import api from '../../services/api';
-import logoImage from '../../assets/logo.png';
+import logoImage from '../../assets/logo-mobile.png';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
@@ -38,7 +38,7 @@ const SignUp: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        await api.post('/users', data);
+        await api.post('/api/v1/users', data);
 
         Alert.alert('Cadastro realizado com sucesso', 'Você já pode fazer login na aplicação.');
 

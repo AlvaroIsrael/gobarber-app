@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -10,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
-  padding: ${getStatusBarHeight() + 24}px 24px 24px;
+  padding: ${getStatusBarHeight() + 10}px 24px 24px;
   background: #393939;
   flex-direction: row;
   align-items: center;
@@ -48,9 +49,9 @@ export const UserAvatar = styled.Image`
 `;
 
 export const UserAvatarButton = styled.TouchableOpacity`
-  margin-top: ${Platform.OS === 'ios' ? 32 : 320}px;
-  width: 186px;
-  height: 186px;
+  margin-top: ${Platform.OS === 'ios' ? 50 : 320}px;
+  width: 130px;
+  height: 130px;
   border-radius: 98px;
   background: #393939;
   border: 3px #808080;
@@ -66,4 +67,38 @@ export const UserInitials = styled.Text`
   font-size: 56px;
   color: #808080;
   font-family: ${'Montserrat-Medium'};
+`;
+
+export const QuitButton = styled(RectButton)`
+  width: 100%;
+  height: 60px;
+  background: #393939;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 12px;
+`;
+
+export const QuitButtonText = styled.Text`
+  font-family: ${'VarelaRound-Regular'};
+  color: #fff;
+  font-size: 16px;
+`;
+
+export const SaveButton = styled(RectButton)`
+  margin-top: 25px;
+  width: 100%;
+  height: 60px;
+  background: #0f43a9;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+`;
+
+export const SaveButtonText = styled.Text`
+  font-family: ${'VarelaRound-Regular'};
+  color: #fff;
+  font-size: 16px;
 `;

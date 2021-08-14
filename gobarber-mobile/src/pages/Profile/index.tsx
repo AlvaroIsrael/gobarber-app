@@ -25,6 +25,10 @@ import {
   UserAvatarButton,
   UserInitialsContainer,
   UserInitials,
+  QuitButton,
+  QuitButtonText,
+  SaveButton,
+  SaveButtonText,
 } from './styles';
 
 interface ProfileFormData {
@@ -36,7 +40,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
@@ -236,8 +240,13 @@ const Profile: React.FC = () => {
                 onSubmitEditing={() => formRef.current?.submitForm()}
               />
 
-              <Button onPress={() => formRef.current?.submitForm()}>Salvar alterações</Button>
+              <SaveButton onPress={() => formRef.current?.submitForm()}>
+                <SaveButtonText>Salvar alterações</SaveButtonText>
+              </SaveButton>
             </Form>
+            <QuitButton onPress={signOut}>
+              <QuitButtonText>Sair</QuitButtonText>
+            </QuitButton>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
