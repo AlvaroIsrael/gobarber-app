@@ -1,4 +1,4 @@
-<h1 align='center'>GoBarber's Mobile</h1>
+<h1 align='center'>GoBarber Mobile</h1>
 
 ![Go Barber Mobile](/gobarber-mobile/src/assets/header.png)
 
@@ -87,6 +87,6 @@ $ git push origin feature/myAewsomeFeature
 - [TypeScript](https://www.typescriptlang.org/)
 - [JestJs](https://jestjs.io/)
 
-## 🧾 License
+## 📝 License
 
 This software is under MIT license. See [LICENSE](LICENSE.md) for more details.
