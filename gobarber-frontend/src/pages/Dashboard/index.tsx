@@ -80,9 +80,15 @@ const Dashboard: FC = () => {
   }, [currentMonth, monthAvailability]);
 
   const selectedDateAsText = useMemo(() => {
-    return format(selectedDate, '\'Dia\' dd \'de\' MMMM', {
+    const day = 'Dia';
+    const of = 'de';
+    const dateFormat = `'${day}' dd '${of}' MMMM`;
+    return format(selectedDate, dateFormat, {
       locale: ptBR,
-    });
+    })
+      .split(' ')
+      .map(word => (word !== 'de' ? word[0].toUpperCase() + word.substr(1).toLowerCase() : word))
+      .join(' ');
   }, [selectedDate]);
 
   const capitalize = (frase: string): string => {
