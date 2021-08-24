@@ -141,3 +141,8 @@ export const Copyright = styled.div`
   position: absolute;
   bottom: 0;
 `;
+
+export const LogoImage = styled.img`
+  width: 231px;
+  height: 107px;
+`;
