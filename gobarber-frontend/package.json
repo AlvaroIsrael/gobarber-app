@@ -7,6 +7,7 @@
     "@unform/web": "^2.1.6",
     "axios": "^0.21.1",
     "date-fns": "^2.23.0",
+    "esbuild-loader": "^2.15.1",
     "filesize": "^8.0.0",
     "history": "^5.0.1",
     "latest": "^0.2.0",
