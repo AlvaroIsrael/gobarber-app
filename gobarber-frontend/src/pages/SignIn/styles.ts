@@ -137,6 +137,11 @@ export const Copyright = styled.div`
       text-decoration: underline;
     }
   }
+  @media (min-height: 764px) {
+    margin-bottom: 50px;
+    position: absolute;
+    bottom: 0;
+  }
   margin-top: 10px;
 `;
 
