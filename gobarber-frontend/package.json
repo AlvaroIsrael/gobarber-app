@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "craco --openssl-legacy-provider start",
-    "build": "craco build",
+    "build": "craco --openssl-legacy-provider build",
     "test": "clear; craco test --watchAll=false",
     "test:coverage": "clear; craco test --coverage --watchAll=false"
   },
