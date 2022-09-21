@@ -70,6 +70,7 @@
     "prettier/prettier": [
       "warn",
       {
+        "jsxSingleQuote": true,
         "singleQuote": true,
         "semi": true,
         "trailingComma": "all"

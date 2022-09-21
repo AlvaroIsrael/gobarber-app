@@ -35,7 +35,7 @@ const Toast: FC<ToastProps> = ({ message, style }: PropsWithChildren<ToastProps>
         <strong>{message.title}</strong>
         {message.description && <p>{message.description}</p>}
       </div>
-      <button onClick={() => removeToast(message.id)} type="button" aria-label="close">
+      <button onClick={() => removeToast(message.id)} type='button' aria-label='close'>
         <FiXCircle size={18} />
       </button>
     </Container>

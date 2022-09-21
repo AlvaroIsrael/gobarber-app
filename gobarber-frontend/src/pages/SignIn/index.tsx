@@ -67,32 +67,32 @@ const SignIn: React.FC = () => {
     <Container>
       <Content>
         <AnimationContainer>
-          <LogoImage src={logoImg} alt="GoBarber" />
+          <LogoImage src={logoImg} alt='GoBarber' />
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu logon</h1>
 
-            <Input name="email" icon={FiMail} placeholder="E-mail" type="email" autoComplete="email" />
-            <Input name="password" icon={FiLock} placeholder="Senha" type="password" autoComplete="current-password" />
-            <Button type="submit">Entrar</Button>
+            <Input name='email' icon={FiMail} placeholder='E-mail' type='email' autoComplete='email' />
+            <Input name='password' icon={FiLock} placeholder='Senha' type='password' autoComplete='current-password' />
+            <Button type='submit'>Entrar</Button>
 
-            <Link to="forgot-password">Esqueci minha senha</Link>
+            <Link to='forgot-password'>Esqueci minha senha</Link>
           </Form>
 
-          <Link to="/signup">
+          <Link to='/signup'>
             <FiLogIn />
             Criar conta
           </Link>
         </AnimationContainer>
         <Copyright>
           ❤️&nbsp;
-          <a href="https://github.com/AlvaroIsrael/gobarber-app">
+          <a href='https://github.com/AlvaroIsrael/gobarber-app'>
             <strong>Álvaro Israel Nunes Leite</strong>
           </a>
           &nbsp;&copy; 2021
         </Copyright>
       </Content>
       <Background>
-        <LazyLoadImage alt="Go Barber Background" src={signInBackground} effect="blur" />
+        <LazyLoadImage alt='Go Barber Background' src={signInBackground} effect='blur' />
       </Background>
     </Container>
   );

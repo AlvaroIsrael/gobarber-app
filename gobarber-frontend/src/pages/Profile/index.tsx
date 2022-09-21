@@ -121,7 +121,7 @@ const Profile: React.FC = () => {
     <Container>
       <header>
         <div>
-          <Link to="/dashboard">
+          <Link to='/dashboard'>
             <FiArrowLeft />
           </Link>
         </div>
@@ -138,37 +138,37 @@ const Profile: React.FC = () => {
         >
           <AvatarInput>
             <img src={user.avatar_url} alt={user.name} />
-            <label htmlFor="avatar">
+            <label htmlFor='avatar'>
               <FiCamera />
-              <input type="file" id="avatar" onChange={handleAvatarChange} />
+              <input type='file' id='avatar' onChange={handleAvatarChange} />
             </label>
           </AvatarInput>
 
           <h1>Meu perfil</h1>
 
-          <Input name="name" icon={FiUser} placeholder="Nome" />
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input name='name' icon={FiUser} placeholder='Nome' />
+          <Input name='email' icon={FiMail} placeholder='E-mail' />
 
           <Input
             containerStyle={{ marginTop: 24 }}
-            name="old_password"
+            name='old_password'
             icon={FiLock}
-            type="password"
-            placeholder="Senha atual"
-            autoComplete="current-password"
+            type='password'
+            placeholder='Senha atual'
+            autoComplete='current-password'
           />
 
-          <Input name="password" icon={FiLock} type="password" placeholder="Nova senha" autoComplete="new-password" />
+          <Input name='password' icon={FiLock} type='password' placeholder='Nova senha' autoComplete='new-password' />
 
           <Input
-            name="password_confirmation"
+            name='password_confirmation'
             icon={FiLock}
-            type="password"
-            placeholder="Confirmar senha"
-            autoComplete="new-password"
+            type='password'
+            placeholder='Confirmar senha'
+            autoComplete='new-password'
           />
 
-          <Button type="submit">Confirmar alterações</Button>
+          <Button type='submit'>Confirmar alterações</Button>
         </Form>
       </Content>
     </Container>

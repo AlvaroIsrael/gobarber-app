@@ -46,7 +46,7 @@ const Input: React.FC<InputProps> = ({ name, containerStyle = {}, icon: Icon, ..
       <input onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
       {error && (
         <Error title={error}>
-          <FiAlertCircle color="#a90f27" size={20} />
+          <FiAlertCircle color='#a90f27' size={20} />
         </Error>
       )}
     </Container>
