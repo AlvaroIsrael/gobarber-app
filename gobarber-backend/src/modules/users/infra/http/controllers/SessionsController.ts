@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { StatusCodes } from 'http-status-codes';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
-import { classToClass } from 'class-transformer';
+import { instanceToInstance } from 'class-transformer';
 
 class SessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -15,7 +15,7 @@ class SessionsController {
       password,
     });
 
-    return response.status(StatusCodes.OK).json({ user: classToClass(user), token });
+    return response.status(StatusCodes.OK).json({ user: instanceToInstance(user), token });
   }
 }
 
