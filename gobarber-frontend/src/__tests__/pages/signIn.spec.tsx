@@ -1,12 +1,13 @@
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import SignIn from '../../pages/SignIn';
 
-const mockedHistoryPush = jest.fn();
-const mockedSignIn = jest.fn();
-const mockedAddToast = jest.fn();
+const mockedHistoryPush = vi.fn();
+const mockedSignIn = vi.fn();
+const mockedAddToast = vi.fn();
 
-jest.mock('react-router-dom', () => {
+vi.mock('react-router-dom', () => {
   return {
     useHistory: () => ({
       push: mockedHistoryPush,
@@ -15,7 +16,7 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-jest.mock('../../hooks/auth', () => {
+vi.mock('../../hooks/auth', () => {
   return {
     useAuth: () => ({
       signIn: mockedSignIn,
@@ -23,7 +24,7 @@ jest.mock('../../hooks/auth', () => {
   };
 });
 
-jest.mock('../../hooks/toast', () => {
+vi.mock('../../hooks/toast', () => {
   return {
     useToast: () => ({
       addToast: mockedAddToast,

@@ -67,15 +67,15 @@ const SignUp: React.FC = () => {
       <Background />
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="GoBarber" />
+          <img src={logoImg} alt='GoBarber' />
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu cadastro</h1>
-            <Input name="name" icon={FiUser} placeholder="Nome" type="text" autoComplete="name" />
-            <Input name="email" icon={FiMail} placeholder="E-mail" type="email" autoComplete="email" />
-            <Input name="password" icon={FiLock} placeholder="Senha" type="password" autoComplete="current-password" />
-            <Button type="submit">Cadastrar</Button>
+            <Input name='name' icon={FiUser} placeholder='Nome' type='text' autoComplete='name' />
+            <Input name='email' icon={FiMail} placeholder='E-mail' type='email' autoComplete='email' />
+            <Input name='password' icon={FiLock} placeholder='Senha' type='password' autoComplete='current-password' />
+            <Button type='submit'>Cadastrar</Button>
           </Form>
-          <Link to="/">
+          <Link to='/'>
             <FiArrowLeft />
             Voltar para logon
           </Link>

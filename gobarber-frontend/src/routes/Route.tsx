@@ -1,13 +1,13 @@
-import React, { PropsWithChildren } from 'react';
+import React, { FC, ElementType, PropsWithChildren } from 'react';
 import { RouteProps as ReactDomRouteProps, Route as ReactDomRoute, Redirect } from 'react-router-dom';
 import { useAuth } from '../hooks/auth';
 
 interface RouteProps extends Omit<ReactDomRouteProps, 'component'> {
   isPrivate?: boolean;
-  component: React.ElementType;
+  component: ElementType;
 }
 
-const Route: React.FC<RouteProps> = ({
+const Route: FC<PropsWithChildren<RouteProps>> = ({
   isPrivate = false,
   component: Component,
   ...rest
@@ -30,6 +30,10 @@ const Route: React.FC<RouteProps> = ({
       }}
     />
   );
+};
+
+Route.defaultProps = {
+  isPrivate: false,
 };
 
 export default Route;

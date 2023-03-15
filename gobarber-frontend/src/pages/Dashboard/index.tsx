@@ -142,19 +142,19 @@ const Dashboard: FC = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt="GoBarber" />
+          <img src={logoImg} alt='GoBarber' />
 
           <Profile>
             <img src={user.avatar_url} alt={user.name} />
             <div>
               <span>Bem vindo</span>
-              <Link to="/profile">
+              <Link to='/profile'>
                 <strong>{user.name}</strong>
               </Link>
             </div>
           </Profile>
 
-          <button type="button" onClick={signOut}>
+          <button type='button' onClick={signOut}>
             <FiPower />
           </button>
         </HeaderContent>
