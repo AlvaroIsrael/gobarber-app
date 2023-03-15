@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useEffect, useRef, useState, useCallback } from 'react';
-import { IconBaseProps } from 'react-icons';
+import { IconType } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 import { Container, Error } from './styles';
@@ -7,7 +7,7 @@ import { Container, Error } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   containerStyle?: React.CSSProperties;
-  icon?: React.ComponentType<IconBaseProps>;
+  icon?: IconType;
 }
 
 const Input: React.FC<InputProps> = ({ name, containerStyle = {}, icon: Icon, ...rest }: InputProps) => {

@@ -1,12 +1,13 @@
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import api from '../../services/api';
 import ForgotPassword from '../../pages/ForgotPassword';
 
-const mockedHistoryPush = jest.fn();
-const mockedAddToast = jest.fn();
+const mockedHistoryPush = vi.fn();
+const mockedAddToast = vi.fn();
 
-jest.mock('react-router-dom', () => {
+vi.mock('react-router-dom', () => {
   return {
     useHistory: () => ({
       push: mockedHistoryPush,
@@ -15,7 +16,7 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-jest.mock('../../hooks/toast', () => {
+vi.mock('../../hooks/toast', () => {
   return {
     useToast: () => ({
       addToast: mockedAddToast,
@@ -29,7 +30,7 @@ describe('Forgot Password Page', () => {
   });
 
   it('should not be able to recover password without a valid e-mail.', async () => {
-    const axiosPostStub = jest
+    const axiosPostStub = vi
       .spyOn(api, 'post')
       .mockImplementation(async () => api.post('/api/v1/password/forgot', {}))
       .mockReturnValue(Promise.resolve(1));
@@ -48,7 +49,7 @@ describe('Forgot Password Page', () => {
   });
 
   it('should not be able to recover password if api fails.', async () => {
-    jest.spyOn(api, 'post').mockImplementation(() => {
+    vi.spyOn(api, 'post').mockImplementation(() => {
       throw new Error();
     });
 
@@ -70,7 +71,7 @@ describe('Forgot Password Page', () => {
   });
 
   it('should be able to recover password with a valid e-mail.', async () => {
-    const axiosPostStub = jest
+    const axiosPostStub = vi
       .spyOn(api, 'post')
       .mockImplementation(async () => api.post('/api/v1/password/forgot', {}))
       .mockReturnValue(Promise.resolve(1));

@@ -1,12 +1,11 @@
 import React, { PropsWithChildren, useEffect, FC, CSSProperties } from 'react';
 import { FiAlertCircle, FiXCircle, FiCheckCircle, FiInfo } from 'react-icons/fi';
-import { SpringValue } from 'react-spring';
 import { Container } from './styles';
 import { ToastMessage, useToast } from '../../../hooks/toast';
 
 interface ToastProps {
   message: ToastMessage;
-  style: CSSProperties | { right: SpringValue<string>; opacity: SpringValue<number> };
+  style: CSSProperties;
 }
 
 const icons = {

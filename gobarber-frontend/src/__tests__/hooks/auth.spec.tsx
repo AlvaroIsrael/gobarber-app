@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react-hooks';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -19,7 +20,7 @@ describe('Auth hook', () => {
 
     apiMock.onPost('/api/v1/sessions').reply(200, apiResponse);
 
-    const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem');
 
     const { result, waitForNextUpdate } = renderHook(() => useAuth(), {
       wrapper: AuthProvider,
@@ -41,7 +42,7 @@ describe('Auth hook', () => {
   });
 
   it('should restore saved data from storage when auth inits', () => {
-    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(key => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(key => {
       switch (key) {
         case '@GoBarber:token':
           return 'token-123';
@@ -64,7 +65,7 @@ describe('Auth hook', () => {
   });
 
   it('should be able to sign out', async () => {
-    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(key => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(key => {
       switch (key) {
         case '@GoBarber:token':
           return 'token-123';
@@ -79,7 +80,7 @@ describe('Auth hook', () => {
       }
     });
 
-    const removeItemSpy = jest.spyOn(Storage.prototype, 'removeItem');
+    const removeItemSpy = vi.spyOn(Storage.prototype, 'removeItem');
 
     const { result } = renderHook(() => useAuth(), {
       wrapper: AuthProvider,
@@ -94,7 +95,7 @@ describe('Auth hook', () => {
   });
 
   it('should be able to update user data', async () => {
-    const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem');
 
     const { result } = renderHook(() => useAuth(), {
       wrapper: AuthProvider,
