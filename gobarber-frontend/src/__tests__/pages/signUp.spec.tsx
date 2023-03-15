@@ -1,12 +1,13 @@
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import api from '../../services/api';
 import SignUp from '../../pages/SignUp';
 
-const mockedHistoryPush = jest.fn();
-const mockedAddToast = jest.fn();
+const mockedHistoryPush = vi.fn();
+const mockedAddToast = vi.fn();
 
-jest.mock('react-router-dom', () => {
+vi.mock('react-router-dom', () => {
   return {
     useHistory: () => ({
       push: mockedHistoryPush,
@@ -15,7 +16,7 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-jest.mock('../../hooks/toast', () => {
+vi.mock('../../hooks/toast', () => {
   return {
     useToast: () => ({
       addToast: mockedAddToast,
@@ -112,7 +113,7 @@ describe('SignUp Page', () => {
   });
 
   it('should raise a toast with an error if sign up fails.', async () => {
-    jest.spyOn(api, 'post').mockImplementation(() => {
+    vi.spyOn(api, 'post').mockImplementation(() => {
       throw new Error();
     });
 
@@ -136,7 +137,7 @@ describe('SignUp Page', () => {
   });
 
   it('should be able to sign up if all fields are ok.', async () => {
-    const axiosPostStub = jest
+    const axiosPostStub = vi
       .spyOn(api, 'post')
       .mockImplementation(async () => api.post('/api/v1/users', {}))
       .mockReturnValue(Promise.resolve(1));

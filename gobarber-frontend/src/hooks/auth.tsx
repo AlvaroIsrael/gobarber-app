@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, ReactNode, useCallback, useState, useContext } from 'react';
+import React, { createContext, ReactNode, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
 interface User {
@@ -42,7 +42,7 @@ const getDataFromLocalStorage = (): AuthState => {
   return {} as AuthState;
 };
 
-export const AuthProvider: React.FC = ({ children }: PropsWithChildren<ReactNode>) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [data, setData] = useState<AuthState>(getDataFromLocalStorage);
   const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
     const response = await api.post<AuthState>('/api/v1/sessions', { email, password });
