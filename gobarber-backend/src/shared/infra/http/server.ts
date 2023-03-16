@@ -15,7 +15,9 @@ import '@shared/container';
 
 const server = express();
 
-server.use(cors());
+server.use(cors({
+  origin: process.env.APP_WEB_URL,
+}));
 server.use(express.json());
 server.use(rateLimiter);
 server.use(routes);
@@ -31,7 +33,7 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
 
   return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'error',
-    message: err.message //'Internal server error.',
+    message: err.message, //'Internal server error.',
   });
 });
 
