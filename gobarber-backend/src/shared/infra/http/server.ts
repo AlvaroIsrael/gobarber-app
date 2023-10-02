@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { errors } from 'celebrate';
 import 'express-async-errors';
@@ -14,16 +14,20 @@ import '@shared/infra/typeorm';
 import '@shared/container';
 
 const server = express();
-
-server.use(cors({
-  origin: process.env.APP_WEB_URL,
-}));
+server.use(
+  cors({
+    origin: process.env.APP_WEB_URL || '',
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH'],
+    credentials: true,
+  }),
+);
 server.use(express.json());
 server.use(rateLimiter);
 server.use(routes);
 server.use(errors());
 
-server.use((err: Error, request: Request, response: Response, _: NextFunction) => {
+server.use((err: Error, _: Request, response: Response) => {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({
       status: 'error',
@@ -33,10 +37,11 @@ server.use((err: Error, request: Request, response: Response, _: NextFunction) =
 
   return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'error',
-    message: err.message, //'Internal server error.',
+    message: 'Internal server error.',
   });
 });
 
 server.listen(Number(process.env.PORT), () => {
+  // eslint-disable-next-line no-console
   console.log(`🔥 Server running on port ${process.env.PORT}! 🔥`);
 });
