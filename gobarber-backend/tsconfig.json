@@ -1,4 +1,8 @@
 {
+  "include": [
+    "./src/@types/**/*.ts",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "target": "es5",
     "outDir": "./dist",
@@ -27,8 +31,6 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "include": [
-      "./src/@types/**/*.ts",
-    ],
+    "resolveJsonModule": true
   }
 }
