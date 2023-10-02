@@ -88,7 +88,7 @@ const SignIn: React.FC = () => {
           <a href='https://github.com/AlvaroIsrael/gobarber-app'>
             <strong>Álvaro Israel Nunes Leite</strong>
           </a>
-          &nbsp;&copy; 2021
+          &nbsp;&copy; {new Date().getFullYear()}
         </Copyright>
       </Content>
       <Background>
