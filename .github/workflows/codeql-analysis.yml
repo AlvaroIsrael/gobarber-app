@@ -62,6 +62,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".,!node_modules,!.env,!.ormconfig.json"
           target: "~/apps/gobarber-app"
+          timeout: 120s
 
       - name: Run production scripts at remote server
         uses: appleboy/ssh-action@master
