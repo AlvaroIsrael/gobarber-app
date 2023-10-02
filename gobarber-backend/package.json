@@ -45,12 +45,12 @@
     "jest": "^26.6.3",
     "prettier": "^2.0.4",
     "supertest": "^6.1.3",
-    "ts-jest": "^26.5.3",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.2"
   },
   "dependencies": {
+    "ts-jest": "^26.5.3",
     "aws-sdk": "^2.856.0",
     "bcryptjs": "^2.4.3",
     "celebrate": "^13.0.4",
