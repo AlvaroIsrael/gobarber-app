@@ -321,6 +321,89 @@ paths:
           description: When a email is successfully send.
       security: [ ]
 
+  /profile/{user_id}/:
+    get:
+      tags:
+        - Profile
+      description: get profile password
+      summary: show profile password
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  password:
+                    type: string
+                  avatar:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+        '404':
+          description: User not found
+
+  /profile:             
+    put:
+      tags:
+        - Profile
+      description: Update profile password
+      summary: update profile password
+      requestBody:
+        required: true
+        content:
+          applicatiion/json:
+            schema:
+              type: object
+              properties: 
+                user_id:
+                  type: string             
+                name:
+                  type: string
+                email:  
+                  type: string
+                old_password:
+                  type: string
+                password:
+                  type: string
+                passwordConfirmation:
+                  type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+               schema:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                    name:
+                      type: string
+                    email: 
+                      type: string
+                    password:
+                      type: string
+                    old_password: 
+                      type: string
+        '404':
+          description: User not found
+                        
   /providers/{provider_id}/month-availability:
     get:
       tags:
